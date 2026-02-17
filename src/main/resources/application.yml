@@ -1,0 +1,185 @@
+# Gemeinsame Konfiguration
+server:
+  http2:
+    enabled: ${app.http2.enabled}
+  ssl:
+    enabled: ${app.ssl.enabled}
+    bundle: microservice
+  port: ${app.server.port}
+  compression:
+    enabled: true
+    mime-types: application/hal+json
+    min-response-size: 2KB
+  error:
+    whitelabel:
+      enabled: false
+  shutdown: graceful
+
+management:
+  metrics:
+    enable:
+      all: true
+  endpoints:
+    health:
+      probes:
+        enabled: true
+    prometheus:
+      enabled: true
+    web:
+      exposure:
+        include:
+          - prometheus
+          - health
+          - info
+          - metrics
+  tracing:
+    sampling:
+      probability: 1.0
+  otlp:
+    tracing:
+      endpoint: http://${app.tracing.tempo}:4318/v1/traces
+
+# Spring Boot Einstellungen
+spring:
+  #  kafka:
+  #    bootstrap-servers: ${app.kafka.host}:9092
+  #    consumer:
+  #      group-id: ${app.groupId}
+  #      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  #      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+  #      properties:
+  #        spring:
+  #          json:
+  #            type:
+  #              mapping: >
+  #                com.omnixys.payment.models.dto.NewPaymentIdDTO:com.omnixys.atlaxys.models.dto.NewPaymentIdDTO
+  #            trusted:
+  #              packages:
+  #                - com.omnixys.payment.models.dto
+  #          deserializer:
+  #            value:
+  #              delegate:
+  #                class: org.springframework.kafka.support.serializer.JsonDeserializer
+  #    producer:
+  #      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+  #      # value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  #      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+  checkpoint.restore: onRefresh
+
+  datasource:
+    url: ${app.postgres.url}
+    username: ${app.postgres.username}
+    password: ${app.postgres.password}
+
+  flyway:
+    locations: classpath:db/migration
+    create-schemas: false
+
+  jpa:
+    hibernate:
+      naming.physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    open-in-view: false
+    properties:
+      hibernate:
+        #default_schema: kunde
+        jdbc:
+          time_zone: Europe/Berlin
+          batch_versioned_data: true
+          # fuer Oracle: der Treiber teilt bei SELECT das Resultat in standardmaessig maximal 10 Datensaetze auf
+          #fetch_size: 10
+        order_inserts: true
+        order_updates: true
+        session.events.log.LOG_QUERIES_SLOWER_THAN_MS: 20
+        xml_mapping_enabled: false
+      jakarta.persistence:
+        sharedCache.mode: ENABLE_SELECTIVE
+        validation.mode: NONE
+
+  graphql:
+    graphiql:
+      enabled: true
+    schema:
+      printer:
+        enabled: true
+
+  profiles:
+    active: ${app.env}
+
+  application:
+    name: atlaxys-service
+    version: 26.02.17
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://${app.keycloak.host}:${app.keycloak.port}/realms/${app.keycloak.realm}
+
+# Applikationsspezifische Einstellungen
+app:
+  seed:
+    enabled: false
+  version: ${spring.application.version}
+  name: ${spring.application.name}
+  groupId: omnixys-${spring.application.name}
+  env: ${ACTIVE_PROFILE:dev}
+  password: p
+  keycloak:
+    client-secret: ${KC_SERVICE_SECRET}
+    host: ${KC_SERVICE_HOST}
+    port: ${KC_SERVICE_PORT}
+    realm: ${KC_SERVICE_REALM}
+    client-id: ${KC_SERVICE_CLIENT_ID}
+
+  tracing:
+    tempo: ${TEMPO_HOST}
+
+  kafka:
+    host: ${KAFKA_HOST}
+
+# Logging-Konfiguration
+logging:
+  file.name: ./tmp/application.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: ${logging.file.name}.%d{yyyy-MM-dd}.%i.gz
+      max-file-size: 100KB
+      max-history: 3
+  pattern:
+    console: >
+      %clr(%date{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}){faint} %clr(%5level) %clr(${PID:- }){magenta}
+      %clr(---){faint} %clr([%15.15thread]){faint} %clr(%-40.40logger{39}){cyan}
+      %clr(:){faint} %msg%n%wEx
+    file: >
+      %date{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %5level ${PID:- } --- [%thread]
+      %-40.40logger{39} : %m%n%wEx
+  level:
+    com.omnixys.atlaxys: trace
+    org.apache.catalina.loader.WebappClassLoaderBase: info
+    org.springframework.boot.availability.ApplicationAvailabilityBean: debug
+    org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener: warn
+    org.springframework.security.core.userdetails.User: error
+    org.springframework.security.web.server.authorization.AuthorizationWebFilter: trace
+    org.springframework.web.reactive.function.client.ExchangeFunctions: trace
+    org.springframework.web.service.invoker.PathVariableArgumentResolver: trace
+    org.springframework.web.service.invoker.RequestHeaderArgumentResolver: trace
+    org.springframework.web.servlet.DispatcherServlet: debug
+    org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor: debug
+    org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping: debug
+    org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver: error
+    io.micrometer.observation.contextpropagation.ObservationThreadLocalAccessor: error
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
+    org.hibernate.SQL_SLOW: warn
+    org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor: debug
+    io.qameta.allure.AllureLifecycle: fatal
+    org.junit.jupiter.engine.descriptor.TestInstanceLifecycleUtils: warn
+    org.springframework.boot.test.context.SpringBootTestContextBootstrapper: warn
+    org.springframework.test.context.support.AbstractContextLoader: warn
+    org.springframework.test.context.support.AnnotationConfigContextLoaderUtils: warn
+    org.springframework.test.context.support.DefaultTestContextBootstrapper: warn
+    org.springframework.data.mongodb: debug
+    org.junit.jupiter: warn
+
+    # org.springframework.graphql: debug
