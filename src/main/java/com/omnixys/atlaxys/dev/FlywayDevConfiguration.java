@@ -13,7 +13,7 @@ public class FlywayDevConfiguration {
   @Bean
   public ApplicationRunner flywayCleanMigrate(Flyway flyway) {
     return args -> {
-//      flyway.clean();
+      flyway.clean();
       flyway.migrate();
     };
   }

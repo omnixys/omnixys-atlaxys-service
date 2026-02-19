@@ -1,592 +1,582 @@
-2026-02-17T23:10:15.724+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Syrian Arab Republic]
+2026-02-19T17:23:53.455+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_currency (country_id,currency_id) values (?,?)
 
-2026-02-17T23:10:15.725+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.455+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [cb633f88-7f12-48bd-9df9-7181d4843f71]
 
-2026-02-17T23:10:15.725+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [85926883-37fd-4c11-b2d8-4c9a27083262]
+2026-02-19T17:23:53.455+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [0061892f-a397-4a2c-a9e8-cfb62390f9aa]
 
-2026-02-17T23:10:15.725+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.455+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_language (country_id,language_id) values (?,?)
 
-2026-02-17T23:10:15.725+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [TW]
+2026-02-19T17:23:53.455+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [cb633f88-7f12-48bd-9df9-7181d4843f71]
 
-2026-02-17T23:10:15.726+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.455+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [da51cb7e-188d-4624-b769-da9729d5dbc2]
 
-2026-02-17T23:10:15.726+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/tw.png]
+2026-02-19T17:23:53.456+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_timezone (country_id,timezone_id) values (?,?)
 
-2026-02-17T23:10:15.726+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/tw.svg]
+2026-02-19T17:23:53.456+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [cb633f88-7f12-48bd-9df9-7181d4843f71]
 
-2026-02-17T23:10:15.726+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [TW]
+2026-02-19T17:23:53.456+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [424b1f4b-d14a-4e6a-8153-b670084307fa]
 
-2026-02-17T23:10:15.726+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [TWN]
+2026-02-19T17:23:53.456+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select cc1_0.id,cc1_0.code,cc1_0.created_at,cc1_0.updated_at from calling_code cc1_0 where cc1_0.code=?
 
-2026-02-17T23:10:15.726+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Taiwan]
+2026-02-19T17:23:53.456+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [84]
 
-2026-02-17T23:10:15.726+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.457+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.created_at,c1_0.name,c1_0.updated_at from continent c1_0 where c1_0.name=?
 
-2026-02-17T23:10:15.726+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [c1f29e74-8655-4340-9bed-a8b04be6f796]
+2026-02-19T17:23:53.457+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [Oceania]
 
-2026-02-17T23:10:15.726+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.457+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.continent_id,s1_0.created_at,s1_0.name,s1_0.updated_at from subregion s1_0 where s1_0.name=? and s1_0.continent_id=?
 
-2026-02-17T23:10:15.726+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [TJ]
+2026-02-19T17:23:53.457+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [Polynesia]
 
-2026-02-17T23:10:15.727+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.457+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [69d8e0c9-0d3c-4ff8-aba6-7f4ce17a9b2c]
 
-2026-02-17T23:10:15.727+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/tj.png]
+2026-02-19T17:23:53.457+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.created_at,c1_0.name,c1_0.symbol,c1_0.updated_at from currency c1_0 where c1_0.code=?
 
-2026-02-17T23:10:15.727+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/tj.svg]
+2026-02-19T17:23:53.457+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [XPF]
 
-2026-02-17T23:10:15.727+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [TJ]
+2026-02-19T17:23:53.458+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select l1_0.id,l1_0.created_at,l1_0.iso2,l1_0.iso3,l1_0.name,l1_0.updated_at from language l1_0 where l1_0.iso2=?
 
-2026-02-17T23:10:15.727+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [TJK]
+2026-02-19T17:23:53.458+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [FR]
 
-2026-02-17T23:10:15.727+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Tajikistan]
+2026-02-19T17:23:53.458+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select t1_0.id,t1_0.created_at,t1_0.updated_at,t1_0.utc_offset from timezone t1_0 where t1_0.utc_offset=?
 
-2026-02-17T23:10:15.727+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.458+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [UTC+12:00]
 
-2026-02-17T23:10:15.727+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [16af8fc5-cb25-49a3-9a34-d22ef9c2dfaf]
+2026-02-19T17:23:53.459+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into calling_code (code,created_at,updated_at,id) values (?,?,?,?)
 
-2026-02-17T23:10:15.727+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.459+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [84]
 
-2026-02-17T23:10:15.727+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [TZ]
+2026-02-19T17:23:53.459+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.456652Z]
 
-2026-02-17T23:10:15.727+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.459+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (3:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.456652Z]
 
-2026-02-17T23:10:15.727+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/tz.png]
+2026-02-19T17:23:53.459+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (4:UUID) <- [aaeec399-61b8-4bc7-bc3c-7c20b3172ad6]
 
-2026-02-17T23:10:15.728+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/tz.svg]
+2026-02-19T17:23:53.459+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country (continent_id,created_at,flag_png,flag_svg,iso2,iso3,name,native_name,subregion_id,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?)
 
-2026-02-17T23:10:15.728+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [TZ]
+2026-02-19T17:23:53.459+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [91a2d416-da80-49db-a925-b38cfc2e37e2]
 
-2026-02-17T23:10:15.728+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [TZA]
+2026-02-19T17:23:53.459+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.451048Z]
 
-2026-02-17T23:10:15.728+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Tanzania, United Republic of]
+2026-02-19T17:23:53.459+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [https://flagcdn.com/w320/vn.png]
 
-2026-02-17T23:10:15.728+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.459+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [https://flagcdn.com/vn.svg]
 
-2026-02-17T23:10:15.728+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [40509277-d917-46e8-989a-c835b103481a]
+2026-02-19T17:23:53.459+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [VN]
 
-2026-02-17T23:10:15.728+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.459+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [VNM]
 
-2026-02-17T23:10:15.728+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [TH]
+2026-02-19T17:23:53.459+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (7:VARCHAR) <- [Vietnam]
 
-2026-02-17T23:10:15.728+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.459+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (8:VARCHAR) <- [Việt Nam]
 
-2026-02-17T23:10:15.728+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/th.png]
+2026-02-19T17:23:53.459+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (9:UUID) <- [52c89268-6689-4a35-bbeb-ddbc7f148404]
 
-2026-02-17T23:10:15.728+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/th.svg]
+2026-02-19T17:23:53.459+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (10:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.451048Z]
 
-2026-02-17T23:10:15.728+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [TH]
+2026-02-19T17:23:53.459+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (11:UUID) <- [efa3658f-31a8-45d3-9831-666ac968cc5e]
 
-2026-02-17T23:10:15.728+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [THA]
+2026-02-19T17:23:53.460+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_calling_code (country_id,calling_code_id) values (?,?)
 
-2026-02-17T23:10:15.728+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Thailand]
+2026-02-19T17:23:53.460+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [efa3658f-31a8-45d3-9831-666ac968cc5e]
 
-2026-02-17T23:10:15.728+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.460+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [aaeec399-61b8-4bc7-bc3c-7c20b3172ad6]
 
-2026-02-17T23:10:15.728+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [831dbf81-79a7-419c-9f30-b0fa10c50f8e]
+2026-02-19T17:23:53.460+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_currency (country_id,currency_id) values (?,?)
 
-2026-02-17T23:10:15.729+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.460+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [efa3658f-31a8-45d3-9831-666ac968cc5e]
 
-2026-02-17T23:10:15.729+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [TL]
+2026-02-19T17:23:53.460+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [d349cd5b-a694-4368-9622-abced526d621]
 
-2026-02-17T23:10:15.729+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.460+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_language (country_id,language_id) values (?,?)
 
-2026-02-17T23:10:15.729+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/tl.png]
+2026-02-19T17:23:53.460+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [efa3658f-31a8-45d3-9831-666ac968cc5e]
 
-2026-02-17T23:10:15.729+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/tl.svg]
+2026-02-19T17:23:53.460+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [9ac1e191-b71f-4d50-8fd7-37e480642e37]
 
-2026-02-17T23:10:15.729+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [TL]
+2026-02-19T17:23:53.460+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_timezone (country_id,timezone_id) values (?,?)
 
-2026-02-17T23:10:15.729+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [TLS]
+2026-02-19T17:23:53.460+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [efa3658f-31a8-45d3-9831-666ac968cc5e]
 
-2026-02-17T23:10:15.729+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Timor-Leste]
+2026-02-19T17:23:53.460+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [eb747654-ff68-4fc7-ba0e-ccb42e4e6181]
 
-2026-02-17T23:10:15.729+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.460+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select cc1_0.id,cc1_0.code,cc1_0.created_at,cc1_0.updated_at from calling_code cc1_0 where cc1_0.code=?
 
-2026-02-17T23:10:15.729+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [ab9eefbd-b6fb-46f4-b8d5-44224e56d9f4]
+2026-02-19T17:23:53.460+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [681]
 
-2026-02-17T23:10:15.729+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.461+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.created_at,c1_0.name,c1_0.updated_at from continent c1_0 where c1_0.name=?
 
-2026-02-17T23:10:15.729+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [TG]
+2026-02-19T17:23:53.461+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [Africa]
 
-2026-02-17T23:10:15.730+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.461+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.continent_id,s1_0.created_at,s1_0.name,s1_0.updated_at from subregion s1_0 where s1_0.name=? and s1_0.continent_id=?
 
-2026-02-17T23:10:15.730+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/tg.png]
+2026-02-19T17:23:53.461+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [Northern Africa]
 
-2026-02-17T23:10:15.730+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/tg.svg]
+2026-02-19T17:23:53.461+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [e7106809-c053-4168-9c90-1f4710f4c23a]
 
-2026-02-17T23:10:15.730+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [TG]
+2026-02-19T17:23:53.462+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.created_at,c1_0.name,c1_0.symbol,c1_0.updated_at from currency c1_0 where c1_0.code=?
 
-2026-02-17T23:10:15.730+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [TGO]
+2026-02-19T17:23:53.462+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [MAD]
 
-2026-02-17T23:10:15.730+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Togo]
+2026-02-19T17:23:53.462+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.created_at,c1_0.name,c1_0.symbol,c1_0.updated_at from currency c1_0 where c1_0.code=?
 
-2026-02-17T23:10:15.730+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.462+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [DZD]
 
-2026-02-17T23:10:15.730+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [132803bf-d322-4e20-916d-44357730a418]
+2026-02-19T17:23:53.463+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select l1_0.id,l1_0.created_at,l1_0.iso2,l1_0.iso3,l1_0.name,l1_0.updated_at from language l1_0 where l1_0.iso2=?
 
-2026-02-17T23:10:15.730+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.463+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [ES]
 
-2026-02-17T23:10:15.730+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [TK]
+2026-02-19T17:23:53.463+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select t1_0.id,t1_0.created_at,t1_0.updated_at,t1_0.utc_offset from timezone t1_0 where t1_0.utc_offset=?
 
-2026-02-17T23:10:15.731+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.463+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [UTC+00:00]
 
-2026-02-17T23:10:15.731+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/tk.png]
+2026-02-19T17:23:53.464+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into calling_code (code,created_at,updated_at,id) values (?,?,?,?)
 
-2026-02-17T23:10:15.731+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/tk.svg]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [681]
 
-2026-02-17T23:10:15.731+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [TK]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.461005Z]
 
-2026-02-17T23:10:15.731+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [TKL]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (3:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.461005Z]
 
-2026-02-17T23:10:15.731+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Tokelau]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (4:UUID) <- [4aba4082-51ee-4a92-8a31-65face7ea265]
 
-2026-02-17T23:10:15.731+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.464+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country (continent_id,created_at,flag_png,flag_svg,iso2,iso3,name,native_name,subregion_id,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?)
 
-2026-02-17T23:10:15.731+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [ef8379bc-9691-45c9-aa7b-7dc87e3daf65]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [69d8e0c9-0d3c-4ff8-aba6-7f4ce17a9b2c]
 
-2026-02-17T23:10:15.731+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.456798Z]
 
-2026-02-17T23:10:15.731+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [TO]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [https://flagcdn.com/w320/wf.png]
 
-2026-02-17T23:10:15.732+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [https://flagcdn.com/wf.svg]
 
-2026-02-17T23:10:15.732+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/to.png]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [WF]
 
-2026-02-17T23:10:15.732+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/to.svg]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [WLF]
 
-2026-02-17T23:10:15.732+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [TO]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (7:VARCHAR) <- [Wallis and Futuna]
 
-2026-02-17T23:10:15.732+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [TON]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (8:VARCHAR) <- [Wallis et Futuna]
 
-2026-02-17T23:10:15.732+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Tonga]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (9:UUID) <- [c8754935-5015-40b9-ba6f-872e40856503]
 
-2026-02-17T23:10:15.732+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (10:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.456798Z]
 
-2026-02-17T23:10:15.732+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [6615c060-d99e-4dc1-8e07-57c8affe808b]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (11:UUID) <- [c63c6a55-dc68-412b-be2a-273c1cc0fb65]
 
-2026-02-17T23:10:15.732+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.464+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_calling_code (country_id,calling_code_id) values (?,?)
 
-2026-02-17T23:10:15.732+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [TT]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [c63c6a55-dc68-412b-be2a-273c1cc0fb65]
 
-2026-02-17T23:10:15.732+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [4aba4082-51ee-4a92-8a31-65face7ea265]
 
-2026-02-17T23:10:15.732+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/tt.png]
+2026-02-19T17:23:53.464+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_currency (country_id,currency_id) values (?,?)
 
-2026-02-17T23:10:15.732+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/tt.svg]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [c63c6a55-dc68-412b-be2a-273c1cc0fb65]
 
-2026-02-17T23:10:15.732+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [TT]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [8bb09263-e90b-426f-ac76-c56c7aa634f5]
 
-2026-02-17T23:10:15.732+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [TTO]
+2026-02-19T17:23:53.464+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_language (country_id,language_id) values (?,?)
 
-2026-02-17T23:10:15.732+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Trinidad and Tobago]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [c63c6a55-dc68-412b-be2a-273c1cc0fb65]
 
-2026-02-17T23:10:15.732+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.464+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [395b7127-5057-4061-af47-9a8840601e47]
 
-2026-02-17T23:10:15.732+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [2908df41-729d-40ec-9fef-1c6d47d3a2d4]
+2026-02-19T17:23:53.465+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_timezone (country_id,timezone_id) values (?,?)
 
-2026-02-17T23:10:15.733+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.465+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [c63c6a55-dc68-412b-be2a-273c1cc0fb65]
 
-2026-02-17T23:10:15.733+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [TN]
+2026-02-19T17:23:53.465+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [3faf3efa-fa6c-46ee-af4b-95d59bd0fbc2]
 
-2026-02-17T23:10:15.733+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.465+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select cc1_0.id,cc1_0.code,cc1_0.created_at,cc1_0.updated_at from calling_code cc1_0 where cc1_0.code=?
 
-2026-02-17T23:10:15.733+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/tn.png]
+2026-02-19T17:23:53.465+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [212]
 
-2026-02-17T23:10:15.733+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/tn.svg]
+2026-02-19T17:23:53.465+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.created_at,c1_0.name,c1_0.updated_at from continent c1_0 where c1_0.name=?
 
-2026-02-17T23:10:15.733+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [TN]
+2026-02-19T17:23:53.465+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [Asia]
 
-2026-02-17T23:10:15.733+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [TUN]
+2026-02-19T17:23:53.466+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.continent_id,s1_0.created_at,s1_0.name,s1_0.updated_at from subregion s1_0 where s1_0.name=? and s1_0.continent_id=?
 
-2026-02-17T23:10:15.733+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Tunisia]
+2026-02-19T17:23:53.466+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [Western Asia]
 
-2026-02-17T23:10:15.733+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.466+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [91a2d416-da80-49db-a925-b38cfc2e37e2]
 
-2026-02-17T23:10:15.733+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [3d2100f7-f847-4b81-80bb-8fbf9e8bda9e]
+2026-02-19T17:23:53.466+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.created_at,c1_0.name,c1_0.symbol,c1_0.updated_at from currency c1_0 where c1_0.code=?
 
-2026-02-17T23:10:15.733+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.466+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [YER]
 
-2026-02-17T23:10:15.733+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [TR]
+2026-02-19T17:23:53.466+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select l1_0.id,l1_0.created_at,l1_0.iso2,l1_0.iso3,l1_0.name,l1_0.updated_at from language l1_0 where l1_0.iso2=?
 
-2026-02-17T23:10:15.734+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.467+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [AR]
 
-2026-02-17T23:10:15.734+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/tr.png]
+2026-02-19T17:23:53.467+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select t1_0.id,t1_0.created_at,t1_0.updated_at,t1_0.utc_offset from timezone t1_0 where t1_0.utc_offset=?
 
-2026-02-17T23:10:15.734+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/tr.svg]
+2026-02-19T17:23:53.467+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [UTC+03:00]
 
-2026-02-17T23:10:15.734+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [TR]
+2026-02-19T17:23:53.467+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select cc1_0.id,cc1_0.code,cc1_0.created_at,cc1_0.updated_at from calling_code cc1_0 where cc1_0.code=?
 
-2026-02-17T23:10:15.734+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [TUR]
+2026-02-19T17:23:53.467+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [967]
 
-2026-02-17T23:10:15.734+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Turkey]
+2026-02-19T17:23:53.468+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.created_at,c1_0.name,c1_0.updated_at from continent c1_0 where c1_0.name=?
 
-2026-02-17T23:10:15.734+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.468+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [Africa]
 
-2026-02-17T23:10:15.734+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [c512408e-076f-40f2-a3fe-5b40a7f4bce9]
+2026-02-19T17:23:53.468+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.continent_id,s1_0.created_at,s1_0.name,s1_0.updated_at from subregion s1_0 where s1_0.name=? and s1_0.continent_id=?
 
-2026-02-17T23:10:15.734+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.468+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [Eastern Africa]
 
-2026-02-17T23:10:15.734+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [TM]
+2026-02-19T17:23:53.468+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [e7106809-c053-4168-9c90-1f4710f4c23a]
 
-2026-02-17T23:10:15.735+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.469+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country (continent_id,created_at,flag_png,flag_svg,iso2,iso3,name,native_name,subregion_id,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?)
 
-2026-02-17T23:10:15.735+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/tm.png]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [e7106809-c053-4168-9c90-1f4710f4c23a]
 
-2026-02-17T23:10:15.735+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/tm.svg]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.461184Z]
 
-2026-02-17T23:10:15.735+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [TM]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [https://flagcdn.com/w320/eh.png]
 
-2026-02-17T23:10:15.735+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [TKM]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [https://flagcdn.com/eh.svg]
 
-2026-02-17T23:10:15.735+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Turkmenistan]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [EH]
 
-2026-02-17T23:10:15.735+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [ESH]
 
-2026-02-17T23:10:15.735+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [2ad2d5f1-ab0c-4c61-bc40-764010717bd1]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (7:VARCHAR) <- [Western Sahara]
 
-2026-02-17T23:10:15.735+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (8:VARCHAR) <- [الصحراء الغربية]
 
-2026-02-17T23:10:15.735+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [TC]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (9:UUID) <- [78a83589-372c-43fb-9de2-c2c2f71a2290]
 
-2026-02-17T23:10:15.736+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (10:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.461184Z]
 
-2026-02-17T23:10:15.736+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/tc.png]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (11:UUID) <- [eee64a1d-7865-49f5-afd5-933a61e38c85]
 
-2026-02-17T23:10:15.736+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/tc.svg]
+2026-02-19T17:23:53.469+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country (continent_id,created_at,flag_png,flag_svg,iso2,iso3,name,native_name,subregion_id,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?)
 
-2026-02-17T23:10:15.736+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [TC]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [91a2d416-da80-49db-a925-b38cfc2e37e2]
 
-2026-02-17T23:10:15.736+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [TCA]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.465588Z]
 
-2026-02-17T23:10:15.736+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Turks and Caicos Islands]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [https://flagcdn.com/w320/ye.png]
 
-2026-02-17T23:10:15.736+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [https://flagcdn.com/ye.svg]
 
-2026-02-17T23:10:15.736+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [1e2a36fd-3ad6-4e11-8d74-1ae2d6215cf2]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [YE]
 
-2026-02-17T23:10:15.736+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [YEM]
 
-2026-02-17T23:10:15.736+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [TV]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (7:VARCHAR) <- [Yemen]
 
-2026-02-17T23:10:15.736+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (8:VARCHAR) <- [اليَمَن]
 
-2026-02-17T23:10:15.736+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/tv.png]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (9:UUID) <- [902980c4-7d15-44da-a1ed-44eade00c2fa]
 
-2026-02-17T23:10:15.736+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/tv.svg]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (10:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.465588Z]
 
-2026-02-17T23:10:15.736+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [TV]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (11:UUID) <- [318c00e8-c882-4b11-9711-094c03abbe30]
 
-2026-02-17T23:10:15.736+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [TUV]
+2026-02-19T17:23:53.469+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into currency (code,created_at,name,symbol,updated_at,id) values (?,?,?,?,?,?)
 
-2026-02-17T23:10:15.736+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Tuvalu]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [YER]
 
-2026-02-17T23:10:15.736+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.466759Z]
 
-2026-02-17T23:10:15.736+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [812d3f8f-8bf0-48b5-a11b-3fd4dcd9e24b]
+2026-02-19T17:23:53.469+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [Yemeni rial]
 
-2026-02-17T23:10:15.737+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [﷼]
 
-2026-02-17T23:10:15.737+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [UG]
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (5:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.466759Z]
 
-2026-02-17T23:10:15.737+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (6:UUID) <- [b98b81a6-fa94-47f7-b1aa-83b5d0fc6aba]
 
-2026-02-17T23:10:15.737+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/ug.png]
+2026-02-19T17:23:53.470+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into calling_code (code,created_at,updated_at,id) values (?,?,?,?)
 
-2026-02-17T23:10:15.737+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/ug.svg]
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [967]
 
-2026-02-17T23:10:15.737+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [UG]
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.468076Z]
 
-2026-02-17T23:10:15.737+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [UGA]
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (3:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.468076Z]
 
-2026-02-17T23:10:15.737+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Uganda]
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (4:UUID) <- [4aab8144-87b9-4a6d-98ca-0550cfdad127]
 
-2026-02-17T23:10:15.737+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.470+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_calling_code (country_id,calling_code_id) values (?,?)
 
-2026-02-17T23:10:15.737+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [c1eb0c48-5d71-4db0-bf3b-07bd4a2ddfb4]
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [eee64a1d-7865-49f5-afd5-933a61e38c85]
 
-2026-02-17T23:10:15.738+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [5158cf41-7751-4839-b904-e337704153da]
 
-2026-02-17T23:10:15.738+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [UA]
+2026-02-19T17:23:53.470+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_calling_code (country_id,calling_code_id) values (?,?)
 
-2026-02-17T23:10:15.738+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [318c00e8-c882-4b11-9711-094c03abbe30]
 
-2026-02-17T23:10:15.738+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/ua.png]
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [4aab8144-87b9-4a6d-98ca-0550cfdad127]
 
-2026-02-17T23:10:15.738+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/ua.svg]
+2026-02-19T17:23:53.470+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_currency (country_id,currency_id) values (?,?)
 
-2026-02-17T23:10:15.738+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [UA]
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [eee64a1d-7865-49f5-afd5-933a61e38c85]
 
-2026-02-17T23:10:15.738+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [UKR]
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [97ba5dd1-3d89-4f23-8777-feba2a406be4]
 
-2026-02-17T23:10:15.738+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Ukraine]
+2026-02-19T17:23:53.470+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_currency (country_id,currency_id) values (?,?)
 
-2026-02-17T23:10:15.738+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [eee64a1d-7865-49f5-afd5-933a61e38c85]
 
-2026-02-17T23:10:15.738+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [95afab92-2874-4f69-8e40-f2b3f249d84a]
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [8b31978f-b1bb-40a2-b1c6-773c04d84319]
 
-2026-02-17T23:10:15.739+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.470+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_currency (country_id,currency_id) values (?,?)
 
-2026-02-17T23:10:15.739+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [AE]
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [318c00e8-c882-4b11-9711-094c03abbe30]
 
-2026-02-17T23:10:15.739+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [b98b81a6-fa94-47f7-b1aa-83b5d0fc6aba]
 
-2026-02-17T23:10:15.739+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/ae.png]
+2026-02-19T17:23:53.470+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_language (country_id,language_id) values (?,?)
 
-2026-02-17T23:10:15.739+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/ae.svg]
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [eee64a1d-7865-49f5-afd5-933a61e38c85]
 
-2026-02-17T23:10:15.739+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [AE]
+2026-02-19T17:23:53.470+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [da51cb7e-188d-4624-b769-da9729d5dbc2]
 
-2026-02-17T23:10:15.739+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [ARE]
+2026-02-19T17:23:53.471+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_language (country_id,language_id) values (?,?)
 
-2026-02-17T23:10:15.739+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [United Arab Emirates]
+2026-02-19T17:23:53.471+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [318c00e8-c882-4b11-9711-094c03abbe30]
 
-2026-02-17T23:10:15.739+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.471+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [392fe521-53ed-4d12-8302-39370fdb6f82]
 
-2026-02-17T23:10:15.739+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [15329b16-a37b-4316-af46-4cd34c450a51]
+2026-02-19T17:23:53.471+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_timezone (country_id,timezone_id) values (?,?)
 
-2026-02-17T23:10:15.739+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.471+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [eee64a1d-7865-49f5-afd5-933a61e38c85]
 
-2026-02-17T23:10:15.739+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [GB]
+2026-02-19T17:23:53.471+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [3eca15bb-a51a-4634-952f-897ca763ab02]
 
-2026-02-17T23:10:15.740+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.471+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_timezone (country_id,timezone_id) values (?,?)
 
-2026-02-17T23:10:15.740+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/gb.png]
+2026-02-19T17:23:53.471+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [318c00e8-c882-4b11-9711-094c03abbe30]
 
-2026-02-17T23:10:15.740+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/gb.svg]
+2026-02-19T17:23:53.471+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [9972c3d2-a9d2-48e0-93b4-be943a24eb1d]
 
-2026-02-17T23:10:15.740+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [GB]
+2026-02-19T17:23:53.471+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.created_at,c1_0.name,c1_0.symbol,c1_0.updated_at from currency c1_0 where c1_0.code=?
 
-2026-02-17T23:10:15.740+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [GBR]
+2026-02-19T17:23:53.471+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [ZMW]
 
-2026-02-17T23:10:15.740+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [United Kingdom of Great Britain and Northern Ireland]
+2026-02-19T17:23:53.472+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select l1_0.id,l1_0.created_at,l1_0.iso2,l1_0.iso3,l1_0.name,l1_0.updated_at from language l1_0 where l1_0.iso2=?
 
-2026-02-17T23:10:15.740+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.472+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [EN]
 
-2026-02-17T23:10:15.740+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [cda6d716-947c-48a1-b454-316a6e7a529f]
+2026-02-19T17:23:53.472+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select t1_0.id,t1_0.created_at,t1_0.updated_at,t1_0.utc_offset from timezone t1_0 where t1_0.utc_offset=?
 
-2026-02-17T23:10:15.740+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.472+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [UTC+02:00]
 
-2026-02-17T23:10:15.740+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [US]
+2026-02-19T17:23:53.472+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select cc1_0.id,cc1_0.code,cc1_0.created_at,cc1_0.updated_at from calling_code cc1_0 where cc1_0.code=?
 
-2026-02-17T23:10:15.741+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.472+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [260]
 
-2026-02-17T23:10:15.741+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/us.png]
+2026-02-19T17:23:53.473+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.created_at,c1_0.name,c1_0.updated_at from continent c1_0 where c1_0.name=?
 
-2026-02-17T23:10:15.741+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/us.svg]
+2026-02-19T17:23:53.473+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [Africa]
 
-2026-02-17T23:10:15.741+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [US]
+2026-02-19T17:23:53.473+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select s1_0.id,s1_0.continent_id,s1_0.created_at,s1_0.name,s1_0.updated_at from subregion s1_0 where s1_0.name=? and s1_0.continent_id=?
 
-2026-02-17T23:10:15.741+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [USA]
+2026-02-19T17:23:53.473+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [Southern Africa]
 
-2026-02-17T23:10:15.741+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [United States of America]
+2026-02-19T17:23:53.473+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [e7106809-c053-4168-9c90-1f4710f4c23a]
 
-2026-02-17T23:10:15.741+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.474+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into currency (code,created_at,name,symbol,updated_at,id) values (?,?,?,?,?,?)
 
-2026-02-17T23:10:15.741+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [6095cbc4-f05b-4dfe-93e7-7c4ad3f6c538]
+2026-02-19T17:23:53.474+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [ZMW]
 
-2026-02-17T23:10:15.741+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.474+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.471738Z]
 
-2026-02-17T23:10:15.741+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [UY]
+2026-02-19T17:23:53.474+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [Zambian kwacha]
 
-2026-02-17T23:10:15.742+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.474+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [ZK]
 
-2026-02-17T23:10:15.742+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/uy.png]
+2026-02-19T17:23:53.474+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (5:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.471738Z]
 
-2026-02-17T23:10:15.742+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/uy.svg]
+2026-02-19T17:23:53.474+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (6:UUID) <- [401d849a-ca38-424d-a834-77e0e06ffbe1]
 
-2026-02-17T23:10:15.742+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [UY]
+2026-02-19T17:23:53.474+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into calling_code (code,created_at,updated_at,id) values (?,?,?,?)
 
-2026-02-17T23:10:15.742+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [URY]
+2026-02-19T17:23:53.474+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [260]
 
-2026-02-17T23:10:15.742+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Uruguay]
+2026-02-19T17:23:53.474+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.473158Z]
 
-2026-02-17T23:10:15.742+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.474+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (3:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.473158Z]
 
-2026-02-17T23:10:15.742+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [df1a214f-a2fb-447d-8800-d2b714d4e001]
+2026-02-19T17:23:53.474+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (4:UUID) <- [31aaae38-27c6-421f-8bf5-5c79e022ac97]
 
-2026-02-17T23:10:15.742+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.475+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country (continent_id,created_at,flag_png,flag_svg,iso2,iso3,name,native_name,subregion_id,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?)
 
-2026-02-17T23:10:15.742+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [UZ]
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [e7106809-c053-4168-9c90-1f4710f4c23a]
 
-2026-02-17T23:10:15.743+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.468191Z]
 
-2026-02-17T23:10:15.743+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/uz.png]
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [https://flagcdn.com/w320/zm.png]
 
-2026-02-17T23:10:15.743+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/uz.svg]
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [https://flagcdn.com/zm.svg]
 
-2026-02-17T23:10:15.743+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [UZ]
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [ZM]
 
-2026-02-17T23:10:15.743+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [UZB]
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [ZMB]
 
-2026-02-17T23:10:15.743+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Uzbekistan]
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (7:VARCHAR) <- [Zambia]
 
-2026-02-17T23:10:15.743+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (8:VARCHAR) <- [Zambia]
 
-2026-02-17T23:10:15.743+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [032ed68b-b3a4-4b6d-a477-af49d0a5e9a8]
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (9:UUID) <- [e759e72f-eb56-4959-9d2b-79771d56b7ca]
 
-2026-02-17T23:10:15.743+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (10:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.468191Z]
 
-2026-02-17T23:10:15.743+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [VU]
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (11:UUID) <- [46723b57-8c25-49f5-a276-d825cddef2fa]
 
-2026-02-17T23:10:15.743+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.475+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_calling_code (country_id,calling_code_id) values (?,?)
 
-2026-02-17T23:10:15.743+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/vu.png]
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [46723b57-8c25-49f5-a276-d825cddef2fa]
 
-2026-02-17T23:10:15.743+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/vu.svg]
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [31aaae38-27c6-421f-8bf5-5c79e022ac97]
 
-2026-02-17T23:10:15.743+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [VU]
+2026-02-19T17:23:53.475+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_currency (country_id,currency_id) values (?,?)
 
-2026-02-17T23:10:15.743+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [VUT]
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [46723b57-8c25-49f5-a276-d825cddef2fa]
 
-2026-02-17T23:10:15.743+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Vanuatu]
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [401d849a-ca38-424d-a834-77e0e06ffbe1]
 
-2026-02-17T23:10:15.743+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.475+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_language (country_id,language_id) values (?,?)
 
-2026-02-17T23:10:15.743+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [45636003-1922-432a-b0e4-fa254309b4a6]
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [46723b57-8c25-49f5-a276-d825cddef2fa]
 
-2026-02-17T23:10:15.744+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.475+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [71ab4c33-5fae-4cf1-ad97-e486424a3560]
 
-2026-02-17T23:10:15.744+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [VE]
+2026-02-19T17:23:53.476+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_timezone (country_id,timezone_id) values (?,?)
 
-2026-02-17T23:10:15.744+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.476+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [46723b57-8c25-49f5-a276-d825cddef2fa]
 
-2026-02-17T23:10:15.744+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/ve.png]
+2026-02-19T17:23:53.476+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [94a0af35-e211-4319-a3d9-9357a9d8c367]
 
-2026-02-17T23:10:15.744+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/ve.svg]
+2026-02-19T17:23:53.476+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select c1_0.id,c1_0.code,c1_0.created_at,c1_0.name,c1_0.symbol,c1_0.updated_at from currency c1_0 where c1_0.code=?
 
-2026-02-17T23:10:15.744+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [VE]
+2026-02-19T17:23:53.476+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [ZMW]
 
-2026-02-17T23:10:15.744+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [VEN]
+2026-02-19T17:23:53.476+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select l1_0.id,l1_0.created_at,l1_0.iso2,l1_0.iso3,l1_0.name,l1_0.updated_at from language l1_0 where l1_0.iso2=?
 
-2026-02-17T23:10:15.744+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Venezuela (Bolivarian Republic of)]
+2026-02-19T17:23:53.476+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [EN]
 
-2026-02-17T23:10:15.744+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.477+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select l1_0.id,l1_0.created_at,l1_0.iso2,l1_0.iso3,l1_0.name,l1_0.updated_at from language l1_0 where l1_0.iso2=?
 
-2026-02-17T23:10:15.744+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [9c49ec19-18ea-4ccd-89d7-32d9cb65a1a1]
+2026-02-19T17:23:53.477+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [SN]
 
-2026-02-17T23:10:15.745+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.477+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into language (created_at,iso2,iso3,name,updated_at,id) values (?,?,?,?,?,?)
 
-2026-02-17T23:10:15.745+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [VN]
+2026-02-19T17:23:53.477+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.477366Z]
 
-2026-02-17T23:10:15.745+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.477+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [SN]
 
-2026-02-17T23:10:15.745+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/vn.png]
+2026-02-19T17:23:53.477+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [SNA]
 
-2026-02-17T23:10:15.745+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/vn.svg]
+2026-02-19T17:23:53.477+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [Shona]
 
-2026-02-17T23:10:15.745+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [VN]
+2026-02-19T17:23:53.477+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (5:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.477366Z]
 
-2026-02-17T23:10:15.745+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [VNM]
+2026-02-19T17:23:53.477+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (6:UUID) <- [1775fe69-fde6-4cc6-b39d-1e8512cc7161]
 
-2026-02-17T23:10:15.745+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Vietnam]
+2026-02-19T17:23:53.478+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select l1_0.id,l1_0.created_at,l1_0.iso2,l1_0.iso3,l1_0.name,l1_0.updated_at from language l1_0 where l1_0.iso2=?
 
-2026-02-17T23:10:15.745+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.478+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [ND]
 
-2026-02-17T23:10:15.745+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [fece55a0-2bc2-4575-9568-75df9d9aa92e]
+2026-02-19T17:23:53.478+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select t1_0.id,t1_0.created_at,t1_0.updated_at,t1_0.utc_offset from timezone t1_0 where t1_0.utc_offset=?
 
-2026-02-17T23:10:15.746+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.478+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [UTC+02:00]
 
-2026-02-17T23:10:15.746+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [WF]
+2026-02-19T17:23:53.478+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : select cc1_0.id,cc1_0.code,cc1_0.created_at,cc1_0.updated_at from calling_code cc1_0 where cc1_0.code=?
 
-2026-02-17T23:10:15.746+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.479+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [263]
 
-2026-02-17T23:10:15.746+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/wf.png]
+2026-02-19T17:23:53.479+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into language (created_at,iso2,iso3,name,updated_at,id) values (?,?,?,?,?,?)
 
-2026-02-17T23:10:15.746+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/wf.svg]
+2026-02-19T17:23:53.479+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.478228Z]
 
-2026-02-17T23:10:15.746+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [WF]
+2026-02-19T17:23:53.479+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [ND]
 
-2026-02-17T23:10:15.746+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [WLF]
+2026-02-19T17:23:53.479+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [NDE]
 
-2026-02-17T23:10:15.746+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Wallis and Futuna]
+2026-02-19T17:23:53.479+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [Northern Ndebele]
 
-2026-02-17T23:10:15.746+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.479+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (5:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.478228Z]
 
-2026-02-17T23:10:15.746+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [4620da76-36eb-411e-93c9-042fdf841021]
+2026-02-19T17:23:53.479+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (6:UUID) <- [7a24a852-888f-40d1-a9b1-b266007f841b]
 
-2026-02-17T23:10:15.746+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.480+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into calling_code (code,created_at,updated_at,id) values (?,?,?,?)
 
-2026-02-17T23:10:15.746+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [EH]
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [263]
 
-2026-02-17T23:10:15.747+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.479207Z]
 
-2026-02-17T23:10:15.747+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/eh.png]
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (3:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.479207Z]
 
-2026-02-17T23:10:15.747+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/eh.svg]
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (4:UUID) <- [dc7c9f8a-6d12-467b-8884-facdf6b1ed33]
 
-2026-02-17T23:10:15.747+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [EH]
+2026-02-19T17:23:53.480+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country (continent_id,created_at,flag_png,flag_svg,iso2,iso3,name,native_name,subregion_id,updated_at,id) values (?,?,?,?,?,?,?,?,?,?,?)
 
-2026-02-17T23:10:15.747+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [ESH]
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [e7106809-c053-4168-9c90-1f4710f4c23a]
 
-2026-02-17T23:10:15.747+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Western Sahara]
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.473301Z]
 
-2026-02-17T23:10:15.747+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [https://flagcdn.com/w320/zw.png]
 
-2026-02-17T23:10:15.747+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [40f7976a-8cde-4a8b-8953-795dd6cfd6af]
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [https://flagcdn.com/zw.svg]
 
-2026-02-17T23:10:15.747+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [ZW]
 
-2026-02-17T23:10:15.747+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [YE]
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [ZWE]
 
-2026-02-17T23:10:15.748+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (7:VARCHAR) <- [Zimbabwe]
 
-2026-02-17T23:10:15.748+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/ye.png]
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (8:VARCHAR) <- [Zimbabwe]
 
-2026-02-17T23:10:15.748+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/ye.svg]
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (9:UUID) <- [038c6694-9cd5-43a0-8c40-2a685f780c24]
 
-2026-02-17T23:10:15.748+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [YE]
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (10:TIMESTAMP_UTC) <- [2026-02-19T16:23:53.473301Z]
 
-2026-02-17T23:10:15.748+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [YEM]
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (11:UUID) <- [f2658487-fa0f-4c6d-9496-2eda35271886]
 
-2026-02-17T23:10:15.748+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Yemen]
+2026-02-19T17:23:53.480+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_calling_code (country_id,calling_code_id) values (?,?)
 
-2026-02-17T23:10:15.748+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [f2658487-fa0f-4c6d-9496-2eda35271886]
 
-2026-02-17T23:10:15.748+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [aea75624-d2d4-43cb-9d90-af81d11bcbac]
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [dc7c9f8a-6d12-467b-8884-facdf6b1ed33]
 
-2026-02-17T23:10:15.748+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.480+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_currency (country_id,currency_id) values (?,?)
 
-2026-02-17T23:10:15.748+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [ZM]
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [f2658487-fa0f-4c6d-9496-2eda35271886]
 
-2026-02-17T23:10:15.749+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.480+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [401d849a-ca38-424d-a834-77e0e06ffbe1]
 
-2026-02-17T23:10:15.749+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/zm.png]
+2026-02-19T17:23:53.481+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_language (country_id,language_id) values (?,?)
 
-2026-02-17T23:10:15.749+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/zm.svg]
+2026-02-19T17:23:53.481+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [f2658487-fa0f-4c6d-9496-2eda35271886]
 
-2026-02-17T23:10:15.749+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [ZM]
+2026-02-19T17:23:53.481+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [1775fe69-fde6-4cc6-b39d-1e8512cc7161]
 
-2026-02-17T23:10:15.749+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [ZMB]
+2026-02-19T17:23:53.481+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_language (country_id,language_id) values (?,?)
 
-2026-02-17T23:10:15.749+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Zambia]
+2026-02-19T17:23:53.481+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [f2658487-fa0f-4c6d-9496-2eda35271886]
 
-2026-02-17T23:10:15.749+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
+2026-02-19T17:23:53.481+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [71ab4c33-5fae-4cf1-ad97-e486424a3560]
 
-2026-02-17T23:10:15.749+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [65474c96-139d-41a5-b36c-328f309604ca]
+2026-02-19T17:23:53.481+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_language (country_id,language_id) values (?,?)
 
-2026-02-17T23:10:15.749+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : select c1_0.id,c1_0.flag_png,c1_0.flag_svg,c1_0.iso2,c1_0.iso3,c1_0.name,c1_0.timezone from country c1_0 where c1_0.iso2=?
+2026-02-19T17:23:53.481+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [f2658487-fa0f-4c6d-9496-2eda35271886]
 
-2026-02-17T23:10:15.749+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [ZW]
+2026-02-19T17:23:53.481+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [7a24a852-888f-40d1-a9b1-b266007f841b]
 
-2026-02-17T23:10:15.750+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] org.hibernate.SQL                        : insert into country (flag_png,flag_svg,iso2,iso3,name,timezone,id) values (?,?,?,?,?,?,?)
+2026-02-19T17:23:53.481+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] org.hibernate.SQL                        : insert into country_timezone (country_id,timezone_id) values (?,?)
 
-2026-02-17T23:10:15.750+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (1:VARCHAR) <- [https://flagcdn.com/w320/zw.png]
+2026-02-19T17:23:53.481+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (1:UUID) <- [f2658487-fa0f-4c6d-9496-2eda35271886]
 
-2026-02-17T23:10:15.750+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (2:VARCHAR) <- [https://flagcdn.com/zw.svg]
+2026-02-19T17:23:53.481+01:00 TRACE 25275 --- [http-nio-8086-exec-2] org.hibernate.orm.jdbc.bind              : binding parameter (2:UUID) <- [94a0af35-e211-4319-a3d9-9357a9d8c367]
 
-2026-02-17T23:10:15.750+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (3:VARCHAR) <- [ZW]
+2026-02-19T17:23:53.487+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, application/json, application/*+json]
 
-2026-02-17T23:10:15.750+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (4:VARCHAR) <- [ZWE]
+2026-02-19T17:23:53.488+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Countries seeded successfully"]
 
-2026-02-17T23:10:15.750+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (5:VARCHAR) <- [Zimbabwe]
-
-2026-02-17T23:10:15.750+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (6:VARCHAR) <- [null]
-
-2026-02-17T23:10:15.750+01:00 TRACE 87405 --- [http-nio-8086-exec-4] org.hibernate.orm.jdbc.bind              : binding parameter (7:UUID) <- [dd677884-b632-48d4-9e80-bb0edf336883]
-
-2026-02-17T23:10:15.757+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, application/json, application/*+json]
-
-2026-02-17T23:10:15.757+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Countries seeded successfully"]
-
-2026-02-17T23:10:15.758+01:00 DEBUG 87405 --- [http-nio-8086-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2026-02-19T17:23:53.490+01:00 DEBUG 25275 --- [http-nio-8086-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
 

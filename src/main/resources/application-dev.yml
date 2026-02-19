@@ -1,9 +1,17 @@
 spring:
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 1000
+        order_inserts: true
+        order_updates: true
   datasource:
 #    url: ${app.postgres.url}
 #    username: ${app.postgres.username}
 #    password: ${app.postgres.password}
     hikari:
+      connection-init-sql: SET search_path TO atlaxys, public;
       connection-timeout: 10000 # Default: 30_000 = 30 Sekunden
       idle-timeout: 120000 # Default: 600_000 = 10 Minuten
       maximum-pool-size: 3 # Default: 10
@@ -11,7 +19,7 @@ spring:
 
   flyway:
     enabled: true
-#    clean-disabled: false
+    clean-disabled: false
     locations: classpath:db/migration/dev
 
   devtools:
@@ -39,11 +47,14 @@ spring:
 app:
   seed:
     enabled: true
+  states:
+    api:
+      key: ${CSC_API_KEY}
   server:
     port: ${SERVER_PORT}
 
   postgres:
-    url: jdbc:postgresql://${POSTGRES_SQL_HOST}:${POSTGRES_SQL_PORT}/${POSTGRES_SQL_DB}
+    url: jdbc:postgresql://${POSTGRES_SQL_HOST}:${POSTGRES_SQL_PORT}/${POSTGRES_SQL_DB}?currentSchema=atlaxys,public
     username: ${POSTGRES_SQL_USERNAME}
     password: ${POSTGRES_SQL_PASSWORD}
 
