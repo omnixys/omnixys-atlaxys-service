@@ -1,7 +1,6 @@
 package com.omnixys.atlaxys.controller;
 
 import com.omnixys.atlaxys.services.CountrySeederService;
-import com.omnixys.atlaxys.services.GermanyImportService;
 import com.omnixys.atlaxys.services.GlobalPostalImportService;
 import com.omnixys.atlaxys.services.StateSeederService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +20,6 @@ public class SeedController {
 
     private final CountrySeederService countrySeederService;
     private final StateSeederService stateSeederService;
-    private final GermanyImportService importService;
     private final GlobalPostalImportService globalPostalImportService;
 
     @PostMapping("/countries")
@@ -38,23 +36,12 @@ public class SeedController {
         return ResponseEntity.ok("States seeded successfully");
     }
 
-    @PostMapping("/de")
-    public ResponseEntity<String> importGermany() throws Exception {
-        System.out.println(Files.exists(Path.of("data/DE.txt")));
-
-        importService.importGermany(
-                Path.of("data/DE.txt") // <- HIER PFAD PRÜFEN
-        );
-
-        return ResponseEntity.ok("Germany import finished");
-    }
-
     @PostMapping("/postal-code")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> importPostal() throws Exception {
 
         globalPostalImportService.importFile(
-                Path.of("data/allCountries.txt")
+                Path.of(".extras/data/allCountries.txt")
         );
 
         return ResponseEntity.ok("Postal import finished");

@@ -123,7 +123,6 @@ CREATE TABLE IF NOT EXISTS atlaxys.state (
     created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT uq_state_country_name UNIQUE (country_id, name),
     CONSTRAINT uq_state_country_code UNIQUE (country_id, code)
     );
 CREATE INDEX IF NOT EXISTS idx_state_country ON atlaxys.state (country_id);
@@ -138,19 +137,17 @@ CREATE TABLE IF NOT EXISTS atlaxys.city (
     created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    country_id UUID NOT NULL REFERENCES atlaxys.country(id) ON DELETE CASCADE,
-    CONSTRAINT uq_city UNIQUE (country_id, state_id, name)
+    CONSTRAINT uq_city UNIQUE (state_id, name)
     );
 
 CREATE INDEX IF NOT EXISTS idx_city_state ON atlaxys.city (state_id);
 CREATE INDEX IF NOT EXISTS idx_city_location ON atlaxys.city USING GIST (location);
 CREATE INDEX IF NOT EXISTS idx_city_name_trgm ON atlaxys.city USING GIN (name gin_trgm_ops);
-CREATE INDEX IF NOT EXISTS idx_city_name_country ON atlaxys.city (name, state_id);
+CREATE INDEX IF NOT EXISTS idx_city_name_country ON atlaxys.city (state_id, name);
 
 -- POSTAL CODE
 CREATE TABLE IF NOT EXISTS atlaxys.postal_code (
-                                                   id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    country_id UUID NOT NULL REFERENCES atlaxys.country(id) ON DELETE CASCADE,
+    id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     city_id     UUID NOT NULL REFERENCES atlaxys.city(id) ON DELETE CASCADE,
     zip         VARCHAR(20) NOT NULL,
     location    GEOGRAPHY(Point, 4326),
@@ -158,14 +155,15 @@ CREATE TABLE IF NOT EXISTS atlaxys.postal_code (
     created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT uq_postal UNIQUE (country_id, zip, city_id)
+    CONSTRAINT uq_postal UNIQUE (city_id, zip)
     );
 
 CREATE INDEX IF NOT EXISTS idx_postal_zip ON atlaxys.postal_code (zip);
 CREATE INDEX IF NOT EXISTS idx_postal_city ON atlaxys.postal_code (city_id);
 CREATE INDEX IF NOT EXISTS idx_postal_location ON atlaxys.postal_code USING GIST (location);
 CREATE INDEX IF NOT EXISTS idx_postal_zip_trgm ON atlaxys.postal_code USING GIN (zip gin_trgm_ops);
-CREATE INDEX IF NOT EXISTS idx_postal_country_zip ON atlaxys.postal_code (country_id, zip);
+CREATE INDEX idx_postal_zip_state ON atlaxys.postal_code (zip, city_id);
+
 
 
 CREATE TABLE atlaxys.staging_postal (
@@ -186,4 +184,6 @@ CREATE TABLE atlaxys.staging_postal (
 CREATE INDEX IF NOT EXISTS idx_staging_country ON atlaxys.staging_postal (country_code);
 CREATE INDEX IF NOT EXISTS idx_staging_zip ON atlaxys.staging_postal (postal_code);
 
-ALTER TABLE atlaxys.country ADD CONSTRAINT fk_country_capital FOREIGN KEY (capital_city_id) REFERENCES atlaxys.city(id);
+
+
+ALTER TABLE atlaxys.country ADD CONSTRAINT fk_country_capital FOREIGN KEY (capital_city_id) REFERENCES atlaxys.city(id) ON DELETE SET NULL;

@@ -65,7 +65,7 @@ public class DbPopulateController {
   @PostMapping(value = "db_populate", produces = TEXT_PLAIN_VALUE)
   public ResponseEntity<String> dbPopulate() {
     log.warn("Die DB wird neu geladen");
-    flyway.clean();
+//    flyway.clean();
     flyway.migrate();
     log.warn("Die DB wurde neu geladen");
     return ok("ok");

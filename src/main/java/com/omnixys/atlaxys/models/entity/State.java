@@ -13,7 +13,13 @@ import jakarta.persistence.Table;
 import lombok.*;
 
 @Entity
-@Table(name = "state")
+@Table(
+        name = "state",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = {"country_id", "name"}),
+                @UniqueConstraint(columnNames = {"country_id", "code"})
+        }
+)
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -26,6 +32,10 @@ public class State extends BaseEntity {
     @Id
     @GeneratedValue
     private UUID id;
+
+    @EqualsAndHashCode.Include
+    @Column(nullable = false, length = 20)
+    private String code;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id", nullable = false)

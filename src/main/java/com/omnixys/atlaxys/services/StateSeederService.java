@@ -1,10 +1,12 @@
 package com.omnixys.atlaxys.services;
 
-import com.omnixys.atlaxys.models.dto.StateApiResponse;
+import com.omnixys.atlaxys.models.dto.StateDTO;
 import com.omnixys.atlaxys.models.entity.Country;
 import com.omnixys.atlaxys.models.entity.State;
 import com.omnixys.atlaxys.repository.CountryRepository;
 import com.omnixys.atlaxys.repository.StateRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -12,7 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestClient;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +24,10 @@ public class StateSeederService {
 
     private final CountryRepository countryRepository;
     private final StateRepository stateRepository;
+
+    @PersistenceContext
+    private EntityManager em;
+
     private final RestClient restClient = RestClient.create();
 
     @Value("${app.seed.enabled:false}")
@@ -29,6 +36,8 @@ public class StateSeederService {
     @Value("${app.states.api.key}")
     private String apiKey;
 
+    private static final int BATCH_SIZE = 200;
+
     public void seedStates() {
 
         if (!seedEnabled) {
@@ -36,10 +45,11 @@ public class StateSeederService {
         }
 
         List<Country> countries = countryRepository.findAll();
+        int counter = 0;
 
         for (Country country : countries) {
 
-            List<StateApiResponse> states =
+            List<StateDTO> apiStates =
                     restClient.get()
                             .uri("https://api.countrystatecity.in/v1/countries/{country}/states",
                                     country.getIso2())
@@ -47,29 +57,55 @@ public class StateSeederService {
                             .retrieve()
                             .body(new ParameterizedTypeReference<>() {});
 
-            if (states == null) continue;
+            if (apiStates == null || apiStates.isEmpty()) continue;
 
-            for (StateApiResponse apiState : states) {
+            // Bulk preload existing states
+            Map<String, State> existingStates =
+                    stateRepository.findByCountry(country)
+                            .stream()
+                            .collect(Collectors.toMap(
+                                    s -> s.getCode().toUpperCase(),
+                                    s -> s
+                            ));
 
-                stateRepository
-                        .findByCountryAndName(country, apiState.name())
-                        .ifPresentOrElse(
-                                existing -> update(existing, apiState),
-                                () -> insert(country, apiState)
-                        );
+            for (StateDTO api : apiStates) {
+
+                if (api == null) continue;
+
+                String code = normalize(api.iso2());
+                String name = normalize(api.name());
+
+                if (code == null || name == null) continue;
+
+                State state = existingStates.get(code);
+
+                if (state == null) {
+                    state = State.builder()
+                            .code(code)
+                            .name(name)
+                            .country(country)
+                            .build();
+
+                    em.persist(state);
+                    existingStates.put(code, state);
+                } else {
+                    state.setName(name);
+                }
+
+                if (++counter % BATCH_SIZE == 0) {
+                    em.flush();
+                    em.clear();
+                }
             }
         }
+
+        em.flush();
+        em.clear();
     }
 
-    private void insert(Country country, StateApiResponse api) {
-        State state = new State();
-        state.setCountry(country);
-        state.setName(api.name());
-        stateRepository.save(state);
-    }
-
-    private void update(State existing, StateApiResponse api) {
-        existing.setName(api.name());
+    private static String normalize(String s) {
+        if (s == null) return null;
+        String t = s.trim();
+        return t.isEmpty() ? null : t.toUpperCase();
     }
 }
-

@@ -10,9 +10,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface StateRepository extends JpaRepository<State, UUID>, JpaSpecificationExecutor<State> {
-
-    Optional<State> findByCountryAndName(Country country, String name);
+    Optional<State> findByCountryAndCode(Country country, String code);
     List<State> findByCountry(Country country);
-
-
 }
