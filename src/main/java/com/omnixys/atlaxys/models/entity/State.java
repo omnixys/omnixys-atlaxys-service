@@ -3,46 +3,84 @@ package com.omnixys.atlaxys.models.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.math.BigDecimal;
+import java.util.*;
 
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.*;
 
 @Entity
 @Table(
         name = "state",
+        schema = "atlaxys",
         uniqueConstraints = {
-                @UniqueConstraint(columnNames = {"country_id", "name"}),
-                @UniqueConstraint(columnNames = {"country_id", "code"})
+                @UniqueConstraint(
+                        name = "uq_state_country_code",
+                        columnNames = {"country_id", "code"}
+                )
         }
 )
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
-@ToString
-@EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class State extends BaseEntity {
 
     @Id
     @GeneratedValue
+    @EqualsAndHashCode.Include
     private UUID id;
 
-    @EqualsAndHashCode.Include
-    @Column(nullable = false, length = 20)
-    private String code;
+    // =====================================================
+    // RELATIONS
+    // =====================================================
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "country_id", nullable = false)
     private Country country;
 
-    @Column(nullable = false, length = 150)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    private State parent;
+
+    @ManyToMany
+    @JoinTable(
+            name = "state_timezone",
+            schema = "atlaxys",
+            joinColumns = @JoinColumn(name = "state_id"),
+            inverseJoinColumns = @JoinColumn(name = "timezone_id")
+    )
+    @Builder.Default
+    private Set<Timezone> timezones = new HashSet<>();
+
+    // =====================================================
+    // FIELDS
+    // =====================================================
+
+    @Column(nullable = false, length = 20)
+    private String code;              // BDS
+
+    @Column(name = "iso3166_2", length = 20)
+    private String iso3166Code;         // AF-BDS
+
+    @Column(nullable = false, length = 200)
     private String name;
+
+    @Column(length = 100)
+    private String type;              // province, state, region
+
+    private Integer level;
+
+    @Column(precision = 10, scale = 8)
+    private BigDecimal latitude;
+
+    @Column(precision = 11, scale = 8)
+    private BigDecimal longitude;
+
+    private Long population;
 
     @OneToMany(mappedBy = "state", cascade = CascadeType.ALL)
     private List<City> cities = new ArrayList<>();

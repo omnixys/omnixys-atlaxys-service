@@ -16,7 +16,6 @@ import java.util.UUID;
 @Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public class Continent extends BaseEntity {
-
     @Id
     @GeneratedValue
     private UUID id;

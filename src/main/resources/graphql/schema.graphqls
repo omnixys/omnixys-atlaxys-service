@@ -1,0 +1,19 @@
+schema {
+    query: Query
+}
+
+type Query {
+    getAllCountries: [Country!]!
+    getStatesByCountry(countryId: ID!): [State!]!
+    getCitiesByState(stateId: ID!): [City!]
+    getCitiesByPostalCode(postalCodeId: ID!): City!
+    getPostalCodesByState(stateId: ID!): [PostalCode!]
+    getPostalCodesByCity(cityId: ID!): [PostalCode!]
+
+    validateAddress(input: AddressValidationInput!): AddressValidationPayload!
+    addressAutocomplete(
+        text: String!
+        countryCode: String
+        limit: Int
+    ): [AddressAutocompletePayload!]!
+}

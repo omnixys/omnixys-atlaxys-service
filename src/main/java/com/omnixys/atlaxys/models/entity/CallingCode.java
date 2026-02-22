@@ -25,6 +25,6 @@ public class CallingCode extends BaseEntity {
     @Column(nullable = false, unique = true, length = 10)
     private String code;
 
-    @ManyToMany(mappedBy = "callingCodes")
+    @OneToMany(mappedBy = "callingCode")
     private List<Country> countries = new ArrayList<>();
 }

@@ -34,6 +34,7 @@
         <dotenv-java.version>3.2.0</dotenv-java.version>
         <enable.preview>--enable-preview</enable.preview>
         <hibernate-processor.version>8.0.0.Alpha1</hibernate-processor.version>
+        <federation-graphql-java-support.version>6.0.0</federation-graphql-java-support.version>
     </properties>
 
     <dependencies>
@@ -54,7 +55,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-graphql</artifactId>
+        </dependency>
+        <!--________________________________________________TEST_______________________________________________ -->
+        <dependency>
+            <groupId>org.springframework.graphql</groupId>
+            <artifactId>spring-graphql-test</artifactId>
+            <scope>test</scope>
+        </dependency>
         <!--________________________________________________DATENBANK_______________________________________________ -->
         <dependency>
             <groupId>org.flywaydb</groupId>
@@ -90,7 +100,11 @@
             <artifactId>jts-core</artifactId>
             <version>1.19.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.apollographql.federation</groupId>
+            <artifactId>federation-graphql-java-support</artifactId>
+            <version>${federation-graphql-java-support.version}</version>
+        </dependency>
         <!--_________________________________________________ EXTRAS________________________________________________ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

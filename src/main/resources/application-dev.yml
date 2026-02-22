@@ -45,6 +45,8 @@ spring:
 
 # Applikationsspezifische Einstellungen
 app:
+  geoapify:
+    apiKey: ${GEOAPIFY_KEY}
   seed:
     enabled: true
   states:

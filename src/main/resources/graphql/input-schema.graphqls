@@ -1,0 +1,49 @@
+# =====================================================
+# FILTER INPUT
+# =====================================================
+
+input CountryFilterInput {
+    name: String
+    continent: String
+    subregion: String
+    currencyCode: String
+    callingCode: String
+}
+
+# =====================================================
+# FILTER INPUT
+# =====================================================
+
+input StateFilterInput {
+    name: String
+    iso3166_2: String
+    code: String
+    type: String
+
+    countryId: ID
+    countryIso2: String
+    countryIso3: String
+}
+
+input CityFilterInput {
+    stateId: ID
+    name: String
+    type: String
+    minPopulation: Int
+    maxPopulation: Int
+}
+
+input PostalCodeFilterInput {
+    countryId: ID
+    cityId: ID
+    zip: String
+}
+
+input AddressValidationInput {
+    street: String!
+    houseNumber: String!
+    postalCode: String!
+    city: String!
+    state: String!
+    country: String!
+}

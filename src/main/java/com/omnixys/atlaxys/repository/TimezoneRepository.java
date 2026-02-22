@@ -7,5 +7,5 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface TimezoneRepository extends JpaRepository<Timezone, UUID> {
-    Optional<Timezone> findByUtcOffset(String utcOffset);
+    Optional<Timezone> findByZoneName(String zoneName);
 }

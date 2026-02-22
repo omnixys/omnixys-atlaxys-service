@@ -40,9 +40,7 @@ public class SeedController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> importPostal() throws Exception {
 
-        globalPostalImportService.importFile(
-                Path.of(".extras/data/allCountries.txt")
-        );
+        globalPostalImportService.importAll();
 
         return ResponseEntity.ok("Postal import finished");
     }

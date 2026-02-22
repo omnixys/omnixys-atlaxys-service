@@ -30,6 +30,6 @@ public class Currency extends BaseEntity {
 
     private String symbol;
 
-    @ManyToMany(mappedBy = "currencies")
+    @ManyToMany(mappedBy = "currency")
     private List<Country> countries = new ArrayList<>();
 }

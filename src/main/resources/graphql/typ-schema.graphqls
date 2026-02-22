@@ -1,0 +1,169 @@
+# =====================================================
+# COUNTRY
+# =====================================================
+type Country {
+    id: ID!
+    name: String!
+    iso2: String!
+    iso3: String!
+    numericCode: String
+    nationality: String
+    flagSvg: String
+    flagPng: String
+    tld: String
+    population: Int
+    areaSqKm: Float
+    latitude: Float
+    longitude: Float
+    continent: Continent!
+    subregion: Subregion!
+    currency: Currency
+    callingCode: CallingCode
+    languages: [Language!]!
+    timezones: [Timezone!]!
+}
+
+type Continent {
+    id: ID!
+    name: String!
+    code: String!
+    subregion: [Subregion!]!
+}
+
+type Subregion {
+    id: ID!
+    name: String!
+    continent: Continent!
+    countries: [Country!]!
+}
+
+type Currency {
+    id: ID!
+    code: String!
+    name: String!
+    symbol: String!
+    countries: [Country!]!
+}
+
+type CallingCode {
+    id: ID!
+    code: String!
+    countries: [Country!]!
+}
+
+type Language {
+    id: ID!
+    iso2: String!
+    iso3: String!
+    name: String!
+    countries: [Country!]!
+}
+
+type Timezone {
+    id: ID!
+    zoneName: String!
+    gmtOffset: String!
+    gmtOffsetName: String!
+    abbreviation: String!
+    tzName: String!
+    countries: [Country!]!
+}
+
+# =====================================================
+# STATE TYPE
+# =====================================================
+
+type State {
+    id: ID!
+
+    code: String!
+    iso3166Code: String
+
+    name: String!
+    type: String
+    level: Int
+
+    latitude: Float
+    longitude: Float
+    population: Int
+
+    country: Country!
+    parent: State
+    timezones: [Timezone!]!
+}
+
+
+
+# =====================================================
+# PAGINATION WRAPPER
+# =====================================================
+
+type StatePage {
+    content: [State!]!
+    totalElements: Int!
+    totalPages: Int!
+    size: Int!
+    number: Int!
+}
+
+# =====================================================
+# CITY
+# =====================================================
+type City {
+    id: ID!
+    name: String!
+    population: Int
+    type: String
+    level: Int
+    location: GeoPoint
+    state: State!
+    timezone: Timezone
+    parent: City
+    postalCodes: [PostalCode!]
+    createdAt: String!
+    updatedAt: String!
+}
+
+type PostalCode {
+    id: ID!
+    zip: String!
+    location: GeoPoint
+    accuracy: Int
+    country: Country!
+    city: City!
+    createdAt: String!
+    updatedAt: String!
+}
+
+# -----------------------------------
+# Supporting Types
+# -----------------------------------
+
+type GeoPoint {
+    latitude: Float
+    longitude: Float
+}
+
+
+type AddressValidationPayload {
+    valid: Boolean!
+    reason: String!
+    confidence: Float
+    formatted: String
+    lon: Float
+    lat: Float
+}
+
+
+type AddressAutocompletePayload {
+    formatted: String
+    street: String
+    houseNumber: String
+    postalCode: String
+    city: String
+    state: String
+    country: String
+    confidence: Float
+    lat: Float
+    lon: Float
+}

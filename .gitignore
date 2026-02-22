@@ -37,3 +37,6 @@ build/
 
 ### TMP
 tmp/**
+
+### DATA
+src/main/resources/data/**

@@ -11,11 +11,22 @@ import java.util.UUID;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import org.locationtech.jts.geom.Point;
 
 
 @Entity
-@Table(name = "city")
+@Table(
+        name = "city",
+        schema = "atlaxys",
+        indexes = {
+                @Index(name = "idx_city_state", columnList = "state_id"),
+                @Index(name = "idx_city_population_not_null", columnList = "population"),
+                @Index(name = "idx_city_timezone", columnList = "timezone_id"),
+                @Index(name = "idx_city_parent", columnList = "parent_id")
+        }
+)
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -24,22 +35,45 @@ import org.locationtech.jts.geom.Point;
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public class City extends BaseEntity {
-
     @Id
     @GeneratedValue
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    // -----------------------------------
+    // Relations
+    // -----------------------------------
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "state_id", nullable = false)
     private State state;
 
-    @Column(nullable = false, length = 150)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "timezone_id")
+    private Timezone timezone;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    private City parent;
+
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
+    private List<PostalCode> postalCodes;
+
+    // -----------------------------------
+    // Fields
+    // -----------------------------------
+
+    @Column(nullable = false)
     private String name;
 
+    @JdbcTypeCode(SqlTypes.GEOGRAPHY)
     @Column(columnDefinition = "geography(Point,4326)")
     private Point location;
 
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
-    private List<PostalCode> postalCodes = new ArrayList<>();
+    private Long population;
+
+    @Column(length = 50)
+    private String type;
+
+    private Integer level;
 }
 

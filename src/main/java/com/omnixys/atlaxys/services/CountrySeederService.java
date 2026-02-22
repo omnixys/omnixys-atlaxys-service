@@ -1,6 +1,9 @@
 package com.omnixys.atlaxys.services;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.omnixys.atlaxys.models.dto.CountryDTO;
+import com.omnixys.atlaxys.models.dto.CountryDetailsDTO;
 import com.omnixys.atlaxys.models.entity.*;
 import com.omnixys.atlaxys.models.entity.Currency;
 import com.omnixys.atlaxys.repository.*;
@@ -9,11 +12,15 @@ import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestClient;
 
+import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -38,12 +45,17 @@ public class CountrySeederService {
 
     private static final int BATCH_SIZE = 100;
 
+    // =====================================================
+    // ENTRY
+    // =====================================================
+
     public void seedCountries() {
 
         if (!seedEnabled) {
             throw new IllegalStateException("Seeding disabled");
         }
 
+        // 1️⃣ Load base data from API
         List<CountryDTO> apiCountries =
                 restClient.get()
                         .uri("https://www.apicountries.com/countries")
@@ -52,12 +64,17 @@ public class CountrySeederService {
 
         if (apiCountries == null || apiCountries.isEmpty()) return;
 
-        Map<String, Country> existingCountries =
+        // 2️⃣ Load detail data from local JSON
+        Map<String, CountryDetailsDTO> detailsMap = loadCountryDetails();
+
+        // 3️⃣ Load existing countries
+        Map<String, Country> existing =
                 countryRepository.findAll()
                         .stream()
-                        .collect(HashMap::new,
-                                (m, c) -> m.put(c.getIso2(), c),
-                                HashMap::putAll);
+                        .collect(Collectors.toMap(
+                                c -> c.getIso2().toUpperCase(),
+                                c -> c
+                        ));
 
         int counter = 0;
 
@@ -65,24 +82,31 @@ public class CountrySeederService {
 
             if (api == null || api.alpha2Code() == null) continue;
 
+            String iso2 = api.alpha2Code().toUpperCase();
+
             Country country =
-                    existingCountries.getOrDefault(
-                            api.alpha2Code(),
-                            new Country()
-                    );
+                    existing.getOrDefault(iso2, new Country());
 
             if (country.getId() == null) {
-                country.setIso2(api.alpha2Code());
+                country.setIso2(iso2);
             }
 
-            applyScalar(country, api);
+            CountryDetailsDTO details = detailsMap.get(iso2);
 
-            country.setContinent(resolveContinent(api));
-            country.setSubregion(resolveSubregion(api, country.getContinent()));
+            applyScalar(country, api, details);
 
-            syncRelations(country, api);
+            Continent continent = resolveContinent(api);
+            country.setContinent(continent);
 
-            em.merge(country); // safe for new + existing
+            Subregion subregion = resolveSubregion(api, continent);
+            country.setSubregion(subregion);
+
+            syncCurrency(country, api);
+            syncCallingCode(country, api);
+            syncLanguages(country, api);
+            syncTimezones(country, details);
+
+            em.merge(country);
 
             if (++counter % BATCH_SIZE == 0) {
                 em.flush();
@@ -94,40 +118,92 @@ public class CountrySeederService {
         em.clear();
     }
 
-    // =========================
-    // Scalar
-    // =========================
+    // =====================================================
+    // LOAD JSON DETAILS
+    // =====================================================
 
-    private void applyScalar(Country country, CountryDTO api) {
+    private Map<String, CountryDetailsDTO> loadCountryDetails() {
+
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+
+            InputStream is =
+                    new ClassPathResource("data/countries.json")
+                            .getInputStream();
+
+            List<CountryDetailsDTO> list =
+                    mapper.readValue(is, new TypeReference<>() {});
+
+            return list.stream()
+                    .filter(d -> d.iso2() != null)
+                    .collect(Collectors.toMap(
+                            d -> d.iso2().toUpperCase(),
+                            d -> d
+                    ));
+
+        } catch (Exception e) {
+            throw new IllegalStateException("Failed to load countries.json", e);
+        }
+    }
+
+    // =====================================================
+    // SCALAR
+    // =====================================================
+
+    private void applyScalar(Country country,
+                             CountryDTO api,
+                             CountryDetailsDTO details) {
+
         country.setName(api.name());
         country.setIso3(api.alpha3Code());
-        country.setNativeName(api.nativeName());
 
         if (api.flags() != null) {
             country.setFlagSvg(api.flags().svg());
             country.setFlagPng(api.flags().png());
         }
+
+        if (details != null) {
+            country.setNumericCode(details.numericCode());
+            country.setNationality(details.nationality());
+            country.setPopulation(details.population());
+            country.setAreaSqKm(details.areaSqKm());
+            country.setTld(details.tld());
+
+            if (details.latitude() != null) {
+                country.setLatitude(new BigDecimal(details.latitude()));
+            }
+
+            if (details.longitude() != null) {
+                country.setLongitude(new BigDecimal(details.longitude()));
+            }
+        }
     }
 
-    // =========================
-    // Reference Resolution
-    // =========================
+    // =====================================================
+    // CONTINENT / SUBREGION
+    // =====================================================
 
     private Continent resolveContinent(CountryDTO api) {
 
-        String name = Optional.ofNullable(api.region()).orElse("Unknown");
+        String name =
+                Optional.ofNullable(api.region()).orElse("Unknown");
 
         return continentRepository.findByName(name)
                 .orElseGet(() ->
                         continentRepository.save(
-                                Continent.builder().name(name).build()
+                                Continent.builder()
+                                        .name(name)
+                                        .build()
                         )
                 );
     }
 
-    private Subregion resolveSubregion(CountryDTO api, Continent continent) {
+    private Subregion resolveSubregion(CountryDTO api,
+                                       Continent continent) {
 
-        String name = Optional.ofNullable(api.subregion()).orElse("Unknown");
+        String name =
+                Optional.ofNullable(api.subregion())
+                        .orElse("Unknown");
 
         return subregionRepository
                 .findByNameAndContinent(name, continent)
@@ -141,48 +217,58 @@ public class CountrySeederService {
                 );
     }
 
-    // =========================
+    // =====================================================
     // RELATIONS
-    // =========================
+    // =====================================================
 
-    private void syncRelations(Country country, CountryDTO api) {
-        syncCurrencies(country, api);
-        syncLanguages(country, api);
-        syncTimezones(country, api);
-        syncCallingCodes(country, api);
+    private void syncCurrency(Country country, CountryDTO api) {
+
+        if (api.currencies() == null
+                || api.currencies().isEmpty()) return;
+
+        CountryDTO.CurrencyDTO c =
+                api.currencies().get(0);
+
+        String code = trimUpper(c.code());
+        if (code == null) return;
+
+        Currency currency =
+                currencyRepository.findByCode(code)
+                        .orElseGet(() ->
+                                currencyRepository.save(
+                                        Currency.builder()
+                                                .code(code)
+                                                .name(nullToEmpty(c.name()))
+                                                .symbol(nullToEmpty(c.symbol()))
+                                                .build()
+                                )
+                        );
+
+        country.setCurrency(currency);
     }
 
-    private void syncCurrencies(Country country, CountryDTO api) {
+    private void syncCallingCode(Country country, CountryDTO api) {
 
-        if (api.currencies() == null) return;
+        if (api.callingCodes() == null
+                || api.callingCodes().isEmpty()) return;
 
-        Set<Currency> desired = new HashSet<>();
+        String raw = api.callingCodes().get(0);
+        if (raw == null) return;
 
-        for (CountryDTO.CurrencyDTO c : api.currencies()) {
+        String formatted =
+                raw.startsWith("+") ? raw : "+" + raw.trim();
 
-            if (c == null) continue;
+        CallingCode callingCode =
+                callingCodeRepository.findByCode(formatted)
+                        .orElseGet(() ->
+                                callingCodeRepository.save(
+                                        CallingCode.builder()
+                                                .code(formatted)
+                                                .build()
+                                )
+                        );
 
-            String code = trimUpper(c.code());
-
-            if (code == null || !code.matches("^[A-Z]{3}$")) continue;
-
-            Currency currency =
-                    currencyRepository.findByCode(code)
-                            .orElseGet(() ->
-                                    currencyRepository.save(
-                                            Currency.builder()
-                                                    .code(code)
-                                                    .name(nullToEmpty(c.name()))
-                                                    .symbol(nullToEmpty(c.symbol()))
-                                                    .build()
-                                    )
-                            );
-
-            desired.add(currency);
-        }
-
-        country.getCurrencies().retainAll(desired);
-        country.getCurrencies().addAll(desired);
+        country.setCallingCode(callingCode);
     }
 
     private void syncLanguages(Country country, CountryDTO api) {
@@ -196,7 +282,6 @@ public class CountrySeederService {
             if (l == null) continue;
 
             String iso2 = trimUpper(l.iso639_1());
-
             if (iso2 == null) continue;
 
             Language language =
@@ -214,26 +299,32 @@ public class CountrySeederService {
             desired.add(language);
         }
 
-        country.getLanguages().retainAll(desired);
+        country.getLanguages().clear();
         country.getLanguages().addAll(desired);
     }
 
-    private void syncTimezones(Country country, CountryDTO api) {
+    private void syncTimezones(Country country,
+                               CountryDetailsDTO details) {
 
-        if (api.timezones() == null) return;
+        if (details == null
+                || details.timezones() == null) return;
 
         Set<Timezone> desired = new HashSet<>();
 
-        for (String tz : api.timezones()) {
-
-            if (tz == null) continue;
+        for (CountryDetailsDTO.TimezoneDTO tz :
+                details.timezones()) {
 
             Timezone timezone =
-                    timezoneRepository.findByUtcOffset(tz)
+                    timezoneRepository
+                            .findByZoneName(tz.zoneName())
                             .orElseGet(() ->
                                     timezoneRepository.save(
                                             Timezone.builder()
-                                                    .utcOffset(tz)
+                                                    .zoneName(tz.zoneName())
+                                                    .gmtOffset(tz.gmtOffset())
+                                                    .gmtOffsetName(tz.gmtOffsetName())
+                                                    .abbreviation(tz.abbreviation())
+                                                    .tzName(tz.tzName())
                                                     .build()
                                     )
                             );
@@ -241,36 +332,13 @@ public class CountrySeederService {
             desired.add(timezone);
         }
 
-        country.getTimezones().retainAll(desired);
+        country.getTimezones().clear();
         country.getTimezones().addAll(desired);
     }
 
-    private void syncCallingCodes(Country country, CountryDTO api) {
-
-        if (api.callingCodes() == null) return;
-
-        Set<CallingCode> desired = new HashSet<>();
-
-        for (String cc : api.callingCodes()) {
-
-            if (cc == null) continue;
-
-            CallingCode callingCode =
-                    callingCodeRepository.findByCode(cc)
-                            .orElseGet(() ->
-                                    callingCodeRepository.save(
-                                            CallingCode.builder()
-                                                    .code(cc)
-                                                    .build()
-                                    )
-                            );
-
-            desired.add(callingCode);
-        }
-
-        country.getCallingCodes().retainAll(desired);
-        country.getCallingCodes().addAll(desired);
-    }
+    // =====================================================
+    // UTIL
+    // =====================================================
 
     private static String trimUpper(String s) {
         if (s == null) return null;
