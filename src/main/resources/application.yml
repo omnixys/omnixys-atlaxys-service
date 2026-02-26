@@ -52,7 +52,7 @@ spring:
   #          json:
   #            type:
   #              mapping: >
-  #                com.omnixys.payment.models.dto.NewPaymentIdDTO:com.omnixys.atlaxys.models.dto.NewPaymentIdDTO
+  #                com.omnixys.payment.models.dto.NewPaymentIdDTO:com.omnixys.address.models.dto.NewPaymentIdDTO
   #            trusted:
   #              packages:
   #                - com.omnixys.payment.models.dto
@@ -107,7 +107,7 @@ spring:
     active: ${app.env}
 
   application:
-    name: atlaxys-service
+    name: address-service
     version: 26.02.17
 
   security:
@@ -155,7 +155,7 @@ logging:
       %date{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %5level ${PID:- } --- [%thread]
       %-40.40logger{39} : %m%n%wEx
   level:
-    com.omnixys.atlaxys: trace
+    com.omnixys.address: trace
     org.apache.catalina.loader.WebappClassLoaderBase: info
     org.springframework.boot.availability.ApplicationAvailabilityBean: debug
     org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener: warn

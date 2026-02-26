@@ -7,11 +7,11 @@ spring:
         order_inserts: true
         order_updates: true
   datasource:
-#    url: ${app.postgres.url}
-#    username: ${app.postgres.username}
-#    password: ${app.postgres.password}
+    #    url: ${app.postgres.url}
+    #    username: ${app.postgres.username}
+    #    password: ${app.postgres.password}
     hikari:
-      connection-init-sql: SET search_path TO atlaxys, public;
+      connection-init-sql: SET search_path TO address, public;
       connection-timeout: 10000 # Default: 30_000 = 30 Sekunden
       idle-timeout: 120000 # Default: 600_000 = 10 Minuten
       maximum-pool-size: 3 # Default: 10
@@ -56,7 +56,7 @@ app:
     port: ${SERVER_PORT}
 
   postgres:
-    url: jdbc:postgresql://${POSTGRES_SQL_HOST}:${POSTGRES_SQL_PORT}/${POSTGRES_SQL_DB}?currentSchema=atlaxys,public
+    url: jdbc:postgresql://${POSTGRES_SQL_HOST}:${POSTGRES_SQL_PORT}/${POSTGRES_SQL_DB}?currentSchema=address,public
     username: ${POSTGRES_SQL_USERNAME}
     password: ${POSTGRES_SQL_PASSWORD}
 

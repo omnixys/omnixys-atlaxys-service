@@ -4,11 +4,11 @@ CREATE EXTENSION IF NOT EXISTS pg_trgm;
 -- STREET
 -- =========================
 
-CREATE TABLE IF NOT EXISTS atlaxys.street (
+CREATE TABLE IF NOT EXISTS address.street (
                                               id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
     city_id      UUID NOT NULL
-    REFERENCES atlaxys.city(id)
+    REFERENCES address.city(id)
     ON DELETE CASCADE,
 
     name         TEXT NOT NULL,
@@ -20,27 +20,27 @@ CREATE TABLE IF NOT EXISTS atlaxys.street (
 
 -- Case-insensitive uniqueness
 CREATE UNIQUE INDEX IF NOT EXISTS uq_street_city_name_ci
-    ON atlaxys.street (city_id, lower(name));
+    ON address.street (city_id, lower(name));
 
 CREATE INDEX IF NOT EXISTS idx_street_city
-    ON atlaxys.street (city_id);
+    ON address.street (city_id);
 
 CREATE INDEX IF NOT EXISTS idx_street_name_trgm
-    ON atlaxys.street USING GIN (name gin_trgm_ops);
+    ON address.street USING GIN (name gin_trgm_ops);
 
 CREATE INDEX IF NOT EXISTS idx_street_location
-    ON atlaxys.street USING GIST (location);
+    ON address.street USING GIST (location);
 
 
 -- =========================
 -- HOUSE_NUMBER
 -- =========================
 
-CREATE TABLE IF NOT EXISTS atlaxys.house_number (
+CREATE TABLE IF NOT EXISTS address.house_number (
                                                     id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
     street_id    UUID NOT NULL
-    REFERENCES atlaxys.street(id)
+    REFERENCES address.street(id)
     ON DELETE CASCADE,
 
     number       VARCHAR(20) NOT NULL,
@@ -52,13 +52,13 @@ CREATE TABLE IF NOT EXISTS atlaxys.house_number (
 
 -- Case-insensitive uniqueness
 CREATE UNIQUE INDEX IF NOT EXISTS uq_house_number_ci
-    ON atlaxys.house_number (street_id, lower(number));
+    ON address.house_number (street_id, lower(number));
 
 CREATE INDEX IF NOT EXISTS idx_house_number_street
-    ON atlaxys.house_number (street_id);
+    ON address.house_number (street_id);
 
 CREATE INDEX IF NOT EXISTS idx_house_number_location
-    ON atlaxys.house_number USING GIST (location);
+    ON address.house_number USING GIST (location);
 
 CREATE INDEX IF NOT EXISTS idx_house_number_number_trgm
-    ON atlaxys.house_number USING GIN (number gin_trgm_ops);
+    ON address.house_number USING GIN (number gin_trgm_ops);

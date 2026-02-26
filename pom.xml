@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.omnixys</groupId>
-    <artifactId>atlaxys</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>atlaxys</name>
-    <description>atlaxys</description>
+    <artifactId>address</artifactId>
+    <version>1.0.0</version>
+    <name>address</name>
+    <description>address</description>
     <url/>
     <licenses>
         <license/>
