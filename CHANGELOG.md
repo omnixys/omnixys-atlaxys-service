@@ -3,6 +3,10 @@
 All notable changes in this project will be documented in this file.
 
 
+## <small>1.0.3 (2026-02-26)</small>
+
+* fix(release-ci): add @semantic-release/npm ([6a439186c1ffd10442139c5dd23e167142326777](https://github.com/omnixys/omnixys-address-service/commit/6a439186c1ffd10442139c5dd23e167142326777))
+
 ## <small>1.0.2 (2026-02-26)</small>
 
 * fix(release-ci): fix Release CI Job ([73a175fadcfcc1590507f7d83412fb3728c99f79](https://github.com/omnixys/omnixys-address-service/commit/73a175fadcfcc1590507f7d83412fb3728c99f79))
