@@ -3,6 +3,10 @@
 All notable changes in this project will be documented in this file.
 
 
+## <small>1.0.2 (2026-02-26)</small>
+
+* fix(release-ci): fix Release CI Job ([73a175fadcfcc1590507f7d83412fb3728c99f79](https://github.com/omnixys/omnixys-address-service/commit/73a175fadcfcc1590507f7d83412fb3728c99f79))
+
 ## <small>1.0.1 (2026-02-26)</small>
 
 * fix(docker-ci): add version ([d2c2b1e5accbe692caa3b892edf53952aac95223](https://github.com/omnixys/omnixys-address-service/commit/d2c2b1e5accbe692caa3b892edf53952aac95223))
