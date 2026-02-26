@@ -26,7 +26,7 @@ variable "APP_NAME" {
 
 # Automatically use today's date (YYYY-MM-DD) as version tag
 variable "APP_VERSION" {
-  default = "0.0.0-dev"
+  default = "1.0.0"
 }
 
 variable "JAVA_VERSION" {

@@ -16,6 +16,9 @@ WORKDIR /source
 COPY mvnw pom.xml ./
 COPY .mvn ./.mvn
 
+# Vorab Maven-Dependencies auflösen (besserer Cache)
+RUN ./mvnw dependency:go-offline -B || true
+
 # If you use multi-module, also copy parent/child poms accordingly
 # COPY pom.xml ./
 # COPY module-a/pom.xml module-a/pom.xml
@@ -24,14 +27,11 @@ COPY .mvn ./.mvn
 # Now copy sources
 COPY src ./src
 
-# Build the Spring Boot jar
-RUN chmod +x ./mvnw && \
-    ./mvnw -B -DskipTests package
-
 # Extract Spring Boot layers (Boot 4.x)
-RUN JAR_FILE=$(ls -1 target/*.jar | grep -v original | head -n 1) && \
-    echo "Using JAR: $JAR_FILE" && \
-    java -Djarmode=tools -jar "$JAR_FILE" extract --layers --destination extracted
+RUN ./mvnw package spring-boot:repackage -Dmaven.test.skip=true -Dspring-boot.build-image.skip=true
+RUN JAR_FILE=$(ls ./target/*.jar | grep -v 'original' | head -n 1) && \
+    echo "Extracting $JAR_FILE" && \
+    java -Djarmode=layertools -jar "$JAR_FILE" extract
 
 # ---------------------------------------------------------------------------------------
 # Stage 2: final (Production image with JRE)
@@ -71,16 +71,14 @@ RUN apt-get update && \
 
 USER app
 
-# Copy extracted layers
-COPY --from=builder --chown=app:app /source/extracted/dependencies/ ./
-COPY --from=builder --chown=app:app /source/extracted/spring-boot-loader/ ./
-COPY --from=builder --chown=app:app /source/extracted/snapshot-dependencies/ ./
-COPY --from=builder --chown=app:app /source/extracted/application/ ./
+# Kopiere extrahierte Spring Boot-Schichten (Layered JAR-Struktur)
+COPY --from=builder --chown=app:app /source/dependencies/ /source/spring-boot-loader/ /source/application/ ./
 
 EXPOSE 8080
 
-# Use http unless you terminate TLS inside the app container
+# Healthcheck für Container-Management (z. B. Docker, Kubernetes)
 HEALTHCHECK --interval=30s --timeout=3s --retries=1 \
-    CMD wget -qO- http://localhost:8080/actuator/health | grep UP || exit 1
+  CMD wget -qO- --no-check-certificate https://localhost:8080/actuator/health/ | grep UP || exit 1
 
-ENTRYPOINT ["dumb-init", "java", "--enable-preview", "-jar", "application.jar"]
+# Start Spring Boot über Spring Boot Launcher (Layer-Modus)
+ENTRYPOINT ["dumb-init", "java", "--enable-preview", "org.springframework.boot.loader.launch.JarLauncher"]
