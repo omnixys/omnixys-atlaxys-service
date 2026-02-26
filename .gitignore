@@ -40,3 +40,147 @@ tmp/**
 
 ### DATA
 src/main/resources/data/**
+
+
+
+## 🦖 Python (FastAPI, Tests, Pipenv, Poetry, etc.)
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.eggs/
+.pytest_cache/
+.coverage*
+.cache
+.tox/
+.nox/
+.hypothesis/
+.pybuilder/
+.pyre/
+.pytype/
+.mypy_cache/
+.dmypy.json
+*.manifest
+*.spec
+celerybeat-schedule
+celerybeat.pid
+
+## 📃 Logs, Reports & Debug
+*.log
+logs/
+pids
+*.pid
+*.seed
+*.pid.lock
+report.*.json
+
+## 🎨 Jupyter & IPython
+.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+## 🎓 Django / Flask / Scrapy / Sphinx
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+instance/
+.webassets-cache
+.scrapy/
+docs/_build/
+
+## 🪓 Test-Coverage / Snapshots
+.coverage*
+.nyc_output
+.clinic
+/coverage
+__tests__/buch/__snapshots__
+
+## 🧲 Node.js (lokale Tools, Linting, etc.)
+node_modules/
+/dist
+/build
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+## ⚙️ Java (Spring Boot, Gradle, Maven, IntelliJ)
+.gradle
+build/
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+.idea/
+*.ipr
+*.iws
+out/
+.project
+.classpath
+.factorypath
+.settings/
+.sts4-cache
+.apt_generated
+.springBeans
+bin/
+
+### Maven
+.mvn/
+!**/gradle-wrapper.jar
+!gradle-wrapper.properties
+
+## 🌐 VS Code / IntelliJ / Eclipse / STS / NetBeans
+.vscode/
+.idea/
+.c9/
+*.launch
+*.sublime-workspace
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+.nb-gradle/
+
+## 🌐 Betriebssystem / IDEs
+.DS_Store
+Thumbs.db
+
+## 🔑 Umgebungsvariablen / Secrets / TLS-Schlüssel
+.env
+.env.*
+.extras/compose/db/*/*.txt
+src/config/resources/tls/key.pem
+
+## ⚠️ Generierte / temporäre Dateien
+.temp
+.tmp
+temp/
+tmp/
+
+## 📊 Exportierte Artefakte, Diagramme, Reports
+.extras/doc/projekthandbuch/html/*
+.extras/doc/folien/*.html
+.extras/doc/api/*
+.extras/doc/ReadMe.html
+scripts/dependency-check-report.html
+dependencies.svg
+
+## ♻️ OpenTelemetry / Observability
+.traces/
+otel-collector-config.yaml
+prometheus.yml
+grafana.db
+tempo.yml
+
+## 🚜 Kafka / Zookeeper (lokal)
+kafka-logs/
+zookeeper-data/
+
+## 📷 Medien-Dateien
+.extras/*.{png,jpeg,gif,mp4,mpeg,mkv,avi,ogg,webm}
