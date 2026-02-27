@@ -3,6 +3,10 @@
 All notable changes in this project will be documented in this file.
 
 
+## <small>1.1.2 (2026-02-27)</small>
+
+* fix(seed): update citySeeder ([9d9257369fcc40fd40772d8017e0b327be3a4030](https://github.com/omnixys/omnixys-address-service/commit/9d9257369fcc40fd40772d8017e0b327be3a4030))
+
 ## <small>1.1.1 (2026-02-27)</small>
 
 * Update cities.json ([63a5f6a5430c4a7d6837172b92222e174e7b4d05](https://github.com/omnixys/omnixys-address-service/commit/63a5f6a5430c4a7d6837172b92222e174e7b4d05))
