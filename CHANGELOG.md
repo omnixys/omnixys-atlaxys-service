@@ -3,6 +3,16 @@
 All notable changes in this project will be documented in this file.
 
 
+## <small>1.1.1 (2026-02-27)</small>
+
+* Update cities.json ([63a5f6a5430c4a7d6837172b92222e174e7b4d05](https://github.com/omnixys/omnixys-address-service/commit/63a5f6a5430c4a7d6837172b92222e174e7b4d05))
+* Merge branch 'main' of https://github.com/omnixys/omnixys-address-service ([6e8851351716c963236996c4260006552bb099db](https://github.com/omnixys/omnixys-address-service/commit/6e8851351716c963236996c4260006552bb099db))
+* chore(seed): remove seed data(part 2) ([55f83885c60f35622f032c6b0a0e75f0d364d851](https://github.com/omnixys/omnixys-address-service/commit/55f83885c60f35622f032c6b0a0e75f0d364d851))
+* chore(seed): removed seed data ([f2eb36f8a88e391a6cfcdaa37b7db7e055498a28](https://github.com/omnixys/omnixys-address-service/commit/f2eb36f8a88e391a6cfcdaa37b7db7e055498a28))
+* chore(seed): removed seed data ([ba7b682ae7dc484d2b578d792a94b2131a9572c9](https://github.com/omnixys/omnixys-address-service/commit/ba7b682ae7dc484d2b578d792a94b2131a9572c9))
+* fix(seed): move allCountries.txt ([9f0dbdbb5472112977d27603ea96955871cd188d](https://github.com/omnixys/omnixys-address-service/commit/9f0dbdbb5472112977d27603ea96955871cd188d))
+* fix(seed): update postalCode seed ([eff7370f7c5bbcecda3d30b614f892558212da49](https://github.com/omnixys/omnixys-address-service/commit/eff7370f7c5bbcecda3d30b614f892558212da49))
+
 ## 1.1.0 (2026-02-27)
 
 * feat(seed): add seed data ([32c0c83ea8051d9b5371eee1080ac470f6d88974](https://github.com/omnixys/omnixys-address-service/commit/32c0c83ea8051d9b5371eee1080ac470f6d88974))
