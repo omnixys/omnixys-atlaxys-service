@@ -34,7 +34,7 @@ public class GlobalPostalImportService {
     @Transactional
     public void importAll() throws Exception {
 
-        Path zipFile = Path.of(".extras/data/allCountries.txt");
+        Path zipFile = new ClassPathResource("data/allCountries.txt");
         var citiesJson = new ClassPathResource("data/cities.json");
 
         Connection connection = DataSourceUtils.getConnection(dataSource);
