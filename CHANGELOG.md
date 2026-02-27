@@ -3,6 +3,10 @@
 All notable changes in this project will be documented in this file.
 
 
+## <small>1.0.5 (2026-02-27)</small>
+
+* fix(config): keycloak ([77f3e718d4274aef5a5880b4f870ce81653e328d](https://github.com/omnixys/omnixys-address-service/commit/77f3e718d4274aef5a5880b4f870ce81653e328d))
+
 ## <small>1.0.4 (2026-02-27)</small>
 
 * fix(config): fix keycloak prrotocol ([08bbd8172bca9994f389f1453c7d1f722fa9d3f6](https://github.com/omnixys/omnixys-address-service/commit/08bbd8172bca9994f389f1453c7d1f722fa9d3f6))
