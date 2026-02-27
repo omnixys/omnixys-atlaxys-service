@@ -3,6 +3,10 @@
 All notable changes in this project will be documented in this file.
 
 
+## 1.1.0 (2026-02-27)
+
+* feat(seed): add seed data ([32c0c83ea8051d9b5371eee1080ac470f6d88974](https://github.com/omnixys/omnixys-address-service/commit/32c0c83ea8051d9b5371eee1080ac470f6d88974))
+
 ## <small>1.0.5 (2026-02-27)</small>
 
 * fix(config): keycloak ([77f3e718d4274aef5a5880b4f870ce81653e328d](https://github.com/omnixys/omnixys-address-service/commit/77f3e718d4274aef5a5880b4f870ce81653e328d))
