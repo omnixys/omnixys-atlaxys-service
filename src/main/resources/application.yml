@@ -114,7 +114,9 @@ spring:
     oauth2:
       resourceserver:
         jwt:
+#          issuer-uri: http://localhost:8080/realms/omnixys
           issuer-uri: ${app.keycloak.uri}
+
 
 # Applikationsspezifische Einstellungen
 app:
