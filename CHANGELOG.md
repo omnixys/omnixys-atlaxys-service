@@ -3,6 +3,10 @@
 All notable changes in this project will be documented in this file.
 
 
+## <small>1.0.4 (2026-02-27)</small>
+
+* fix(config): fix keycloak prrotocol ([08bbd8172bca9994f389f1453c7d1f722fa9d3f6](https://github.com/omnixys/omnixys-address-service/commit/08bbd8172bca9994f389f1453c7d1f722fa9d3f6))
+
 ## <small>1.0.3 (2026-02-26)</small>
 
 * fix(release-ci): add @semantic-release/npm ([6a439186c1ffd10442139c5dd23e167142326777](https://github.com/omnixys/omnixys-address-service/commit/6a439186c1ffd10442139c5dd23e167142326777))
