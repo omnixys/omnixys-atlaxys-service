@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
+import java.io.InputStreamReader;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Connection;
@@ -35,7 +37,7 @@ public class GlobalPostalImportService {
     public void importAll() throws Exception {
 
         var citiesJson = new ClassPathResource("data/cities.json");
-        Path zipFile = Path.of("src/main/resources/data/allCountries.txt");
+        var geoNamesTxt = new ClassPathResource("data/allCountries.txt");
 
         Connection connection = DataSourceUtils.getConnection(dataSource);
         connection.setAutoCommit(false);
@@ -45,7 +47,7 @@ public class GlobalPostalImportService {
             importCitiesJson(connection, citiesJson);
             mergeCitiesFromJson(connection);
 
-            importGeoNamesZip(connection, zipFile);
+            importGeoNamesZip(connection, geoNamesTxt);
 //            mergeStatesFromZip(connection);
             mergePostalCodes(connection);
 
@@ -217,7 +219,7 @@ public class GlobalPostalImportService {
         }
     }
 
-    private void importGeoNamesZip(Connection connection, Path file) throws Exception {
+    private void importGeoNamesZip(Connection connection, ClassPathResource resource) throws Exception {
 
         try (Statement stmt = connection.createStatement()) {
             stmt.execute("DROP TABLE IF EXISTS address.staging_postal");
@@ -243,12 +245,13 @@ public class GlobalPostalImportService {
         PGConnection pg = connection.unwrap(PGConnection.class);
         CopyManager copy = pg.getCopyAPI();
 
-        try (Reader reader = Files.newBufferedReader(file)) {
+        // JAR/Docker safe: read from classpath stream
+        try (Reader reader = new InputStreamReader(resource.getInputStream(), StandardCharsets.UTF_8)) {
             copy.copyIn("""
-            COPY address.staging_postal
-            FROM STDIN
-            WITH (FORMAT csv, DELIMITER E'\\t')
-        """, reader);
+                COPY address.staging_postal
+                FROM STDIN
+                WITH (FORMAT csv, DELIMITER E'\\t')
+            """, reader);
         }
     }
 
