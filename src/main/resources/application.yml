@@ -114,7 +114,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://${app.keycloak.host}:${app.keycloak.port}/realms/${app.keycloak.realm}
+          issuer-uri: ${app.keycloak.protocol}://${app.keycloak.host}:${app.keycloak.port}/realms/${app.keycloak.realm}
 
 # Applikationsspezifische Einstellungen
 app:
@@ -126,6 +126,7 @@ app:
   env: ${ACTIVE_PROFILE:dev}
   password: p
   keycloak:
+    protocol: ${KC_SERVICE_PROTOCOL}
     client-secret: ${KC_SERVICE_SECRET}
     host: ${KC_SERVICE_HOST}
     port: ${KC_SERVICE_PORT}
