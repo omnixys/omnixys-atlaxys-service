@@ -36,7 +36,7 @@ input CityFilterInput {
 input PostalCodeFilterInput {
     countryId: ID
     cityId: ID
-    zip: String
+    code: String
 }
 
 input AddressValidationInput {
@@ -46,4 +46,32 @@ input AddressValidationInput {
     city: String!
     state: String!
     country: String!
+}
+
+input CreateUserAddressInput {
+    userId: ID!
+    addressType: AddressType!
+
+    countryId: ID
+    stateId: ID
+    cityId: ID
+    postalCodeId: ID
+    streetId: ID
+    houseNumberId: ID
+
+    additionalInfo: String
+}
+
+input UpdateUserAddressInput {
+    id: ID!
+    addressType: AddressType
+    additionalInfo: String
+}
+
+input UserAddressFilter {
+    userId: ID
+    countryId: ID
+    cityId: ID
+    postalCodeId: ID
+    addressType: AddressType
 }

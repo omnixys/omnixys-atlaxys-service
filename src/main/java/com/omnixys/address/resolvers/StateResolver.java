@@ -21,9 +21,14 @@ public class StateResolver {
 
     private final StateService stateService;
 
-    // =====================================================
-    // FIND BY ID
-    // =====================================================
+    @QueryMapping
+    public State getStateByName(@Argument final String name) {
+
+        log.debug("GraphQL: stateByName name={}", name);
+        return stateService.findByName(name);
+    }
+
+
     public State stateById(@Argument UUID id) {
 
         log.debug("GraphQL: stateById id={}", id);

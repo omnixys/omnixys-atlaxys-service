@@ -1,14 +1,25 @@
 schema {
     query: Query
+    mutation: Mutation
 }
 
 type Query {
     getAllCountries: [Country!]!
+    getCountryByName(name: String!): Country
+
     getStatesByCountry(countryId: ID!): [State!]!
+    getStateByName(name: String!): State
+
     getCitiesByState(stateId: ID!): [City!]
     getCitiesByPostalCode(postalCodeId: ID!): City!
+    getCityByNameAndState(name: String!, stateId: ID!): City
+
     getPostalCodesByState(stateId: ID!): [PostalCode!]
     getPostalCodesByCity(cityId: ID!): [PostalCode!]
+    getPostalCodeByNameAndCity(code: String!, cityId: ID!): PostalCode
+
+    getStreetByName(name: String!): Street
+    getHouseNumberByName(name: String!): HouseNumber
 
     validateAddress(input: AddressValidationInput!): AddressValidationPayload!
     addressAutocomplete(
@@ -16,4 +27,14 @@ type Query {
         countryCode: String
         limit: Int
     ): [AddressAutocompletePayload!]!
+
+    userAddressById(id: ID!): UserAddress
+    getUserAddressesByUserId(userId: ID!): [UserAddressPayload!]!
+    userAddresses(filter: UserAddressFilter): [UserAddress!]!
+}
+
+type Mutation {
+    createUserAddress(input: CreateUserAddressInput!): UserAddress!
+    updateUserAddress(input: UpdateUserAddressInput!): UserAddress!
+    deleteUserAddressByUserId(userId: ID!): Boolean!
 }

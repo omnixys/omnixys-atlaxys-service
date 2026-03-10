@@ -54,6 +54,17 @@ public class CountryService {
                 });
     }
 
+    public Country findByName(String name) {
+
+        log.debug("Fetching country by name={}", name);
+
+        return countryRepository.findByName(name)
+                .orElseThrow(() -> {
+                    log.warn("Country not found for name={}", name);
+                    return new IllegalArgumentException("Country not found: " + name);
+                });
+    }
+
     // =====================================================
     // FIND BY ISO2
     // =====================================================

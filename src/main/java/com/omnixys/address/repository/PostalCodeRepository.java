@@ -4,6 +4,7 @@ import com.omnixys.address.models.entity.City;
 import com.omnixys.address.models.entity.PostalCode;
 import com.omnixys.address.models.entity.State;
 import jakarta.validation.constraints.NotNull;
+import lombok.NonNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -17,7 +18,11 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface PostalCodeRepository extends JpaRepository<PostalCode, UUID>, JpaSpecificationExecutor<PostalCode> {
-    boolean existsByCityAndZip(City city, String zip);
+
+    @NonNull
+    Optional<PostalCode> findByCodeAndCityId(final String code, final UUID cityId);
+
+    boolean existsByCityAndCode(City city, String code);
     List<PostalCode> findByCityId(UUID cityId);
     Page<PostalCode> findByCity_Id(UUID cityId, Pageable pageable);
 
@@ -25,20 +30,21 @@ public interface PostalCodeRepository extends JpaRepository<PostalCode, UUID>, J
             "city"
     })
     @Override
+    @NonNull
     Optional<PostalCode> findById(UUID id);
 
     @EntityGraph(attributePaths = {
             "city"
     })
-    List<PostalCode> findByZipIgnoreCase(String zip);
+    List<PostalCode> findByCodeIgnoreCase(String code);
 
 
     @Query("""
             select p
             from PostalCode p
             where lower(p.country.iso2) = lower(:iso2)
-              and p.zip = :zip
+              and p.code = :code
             """)
-    List<PostalCode> findAllByCountryIso2AndZip(@Param("iso2") String iso2,
-                                                @Param("zip") String zip);
+    List<PostalCode> findAllByCountryIso2AndCode(@Param("iso2") String iso2,
+                                                @Param("code") String code);
 }

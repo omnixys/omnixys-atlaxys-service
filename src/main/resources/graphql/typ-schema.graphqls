@@ -126,7 +126,7 @@ type City {
 
 type PostalCode {
     id: ID!
-    zip: String!
+    code: String!
     location: GeoPoint
     accuracy: Int
     country: Country!
@@ -166,4 +166,54 @@ type AddressAutocompletePayload {
     confidence: Float
     lat: Float
     lon: Float
+}
+
+enum AddressType {
+    HOME
+    WORK
+    SHIPPING
+    BILLING
+}
+
+type UserAddressPayload {
+    id: ID!
+    userId: ID!
+
+    country: String
+    state: String
+    city: String
+    postalCode: String
+    street: String
+    houseNumber: String
+
+    additionalInfo: String
+    addressType: AddressType!
+}
+
+type UserAddress {
+    id: ID!
+    userId: ID!
+
+    countryId: String
+    stateId: String
+    cityId: String
+    postalCodeId: String
+    streetId: String
+    houseNumberId: String
+
+    additionalInfo: String
+    addressType: AddressType!
+
+    createdAt: String!
+    updatedAt: String!
+}
+
+type Street {
+    id: ID!
+    name: String!
+}
+
+type HouseNumber {
+    id: ID!
+    number: String!
 }

@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS address.user_address (
 
     state_id      UUID
     REFERENCES address.state(id)
-        ON DELETE RESTRICT,
+        ON DELETE SET NULL,
 
     city_id      UUID NOT NULL
     REFERENCES address.city(id)
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS address.user_address (
 
     postal_code_id      UUID
     REFERENCES address.postal_code(id)
-        ON DELETE RESTRICT,
+        ON DELETE SET NULL,
 
     street_id      UUID NOT NULL
     REFERENCES address.street(id)

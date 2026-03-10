@@ -27,16 +27,16 @@ CREATE TABLE IF NOT EXISTS address.postal_code (
     id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     country_id  UUID NOT NULL REFERENCES address.country(id) ON DELETE CASCADE,
     city_id     UUID NOT NULL REFERENCES address.city(id) ON DELETE CASCADE,
-    zip         VARCHAR(20) NOT NULL,
+    code         VARCHAR(20) NOT NULL,
     location    GEOGRAPHY(Point, 4326),
     accuracy    INTEGER,
     created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT uq_postal UNIQUE (country_id, city_id, zip)
+    CONSTRAINT uq_postal UNIQUE (country_id, city_id, code)
     );
 
-CREATE INDEX IF NOT EXISTS idx_postal_zip_country ON address.postal_code (country_id, zip);
+CREATE INDEX IF NOT EXISTS idx_postal_code_country ON address.postal_code (country_id, code);
 CREATE INDEX IF NOT EXISTS idx_postal_city ON address.postal_code (city_id);
 CREATE INDEX IF NOT EXISTS idx_postal_country ON address.postal_code (country_id);
 CREATE INDEX IF NOT EXISTS idx_postal_location ON address.postal_code USING GIST (location);
-CREATE INDEX IF NOT EXISTS idx_postal_zip_trgm ON address.postal_code USING GIN (zip gin_trgm_ops);
+CREATE INDEX IF NOT EXISTS idx_postal_code_trgm ON address.postal_code USING GIN (code gin_trgm_ops);

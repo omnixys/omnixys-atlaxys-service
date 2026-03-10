@@ -1,6 +1,7 @@
 package com.omnixys.address.repository;
 
 import com.omnixys.address.models.entity.HouseNumber;
+import lombok.NonNull;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,6 +13,13 @@ import java.util.UUID;
 
 public interface HouseNumberRepository extends JpaRepository<HouseNumber, UUID> {
 
+    @NonNull
+    Optional<HouseNumber> findByNumberAndStreetId(final String number, final UUID streetId);
+
+
+    @Override
+    @NonNull
+    Optional<HouseNumber> findById(UUID id);
     // ---------- Exact lookups ----------
 
     @Query("""

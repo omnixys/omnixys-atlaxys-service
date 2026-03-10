@@ -29,6 +29,13 @@ public class CountryResolver {
 //        return countryMapper.toCountryPayload(country);
     }
 
+    @QueryMapping
+    public Country getCountryByName(@Argument String name) {
+        log.debug("GraphQL: countryByName name={}", name);
+        return countryService.findByName(name);
+//        return countryMapper.toCountryPayload(country);
+    }
+
     public Country countryByIso2(@Argument String iso2) {
         log.debug("GraphQL: countryByIso2 iso2={}", iso2);
         return countryService.findByIso2(iso2);

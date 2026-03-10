@@ -2,6 +2,7 @@ package com.omnixys.address.repository;
 
 import com.omnixys.address.models.entity.City;
 import com.omnixys.address.models.entity.State;
+import lombok.NonNull;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -13,6 +14,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface CityRepository extends JpaRepository<City, UUID>, JpaSpecificationExecutor<City> {
+
+    @NonNull
+    Optional<City> findByNameAndStateId(final String name, final UUID stateId);
+
     Optional<City> findByNameIgnoreCaseAndState_Country_Id(
             String name,
             UUID countryId

@@ -59,6 +59,27 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-graphql</artifactId>
         </dependency>
+        <!--____________________________________________MONITORING__________________________________________________ -->
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-exporter-otlp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-observation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-tracing</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-tracing-bridge-otel</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
         <!--________________________________________________TEST_______________________________________________ -->
         <dependency>
             <groupId>org.springframework.graphql</groupId>
@@ -105,12 +126,28 @@
             <artifactId>federation-graphql-java-support</artifactId>
             <version>${federation-graphql-java-support.version}</version>
         </dependency>
+        <!--_________________________________________MESSAGING______________________________________________________ -->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
+        <!--____________________________________________CACHE______________________________________________________ -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
         <!--_________________________________________________ EXTRAS________________________________________________ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
         <!--_____________________________________SECURITY___________________________________________________________ -->
         <dependency>
@@ -142,47 +179,6 @@
             <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
         </dependency>
-        <!--____________________________________________MONITORING__________________________________________________ -->
-        <!-- https://mvnrepository.com/artifact/io.opentelemetry/opentelemetry-exporter-otlp -->
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-exporter-otlp</artifactId>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.micrometer/micrometer-observation -->
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-observation</artifactId>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.micrometer/micrometer-tracing -->
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-tracing</artifactId>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.micrometer/micrometer-tracing-bridge-otel -->
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-tracing-bridge-otel</artifactId>
-        </dependency>
-        <!--
-                <dependency>
-                    <groupId>io.micrometer</groupId>
-                    <artifactId>micrometer-tracing-bridge-brave</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>io.micrometer</groupId>
-                    <artifactId>micrometer-registry-otlp</artifactId>
-                    <scope>runtime</scope>
-                </dependency> -->
-
-        <!-- https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus -->
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
-        </dependency>
-        <!--		<dependency>-->
-        <!--			<groupId>org.springframework.cloud</groupId>-->
-        <!--			<artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>-->
-        <!--		</dependency>-->
     </dependencies>
 
     <dependencyManagement>

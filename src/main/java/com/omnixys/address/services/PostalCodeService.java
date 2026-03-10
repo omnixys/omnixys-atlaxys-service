@@ -1,6 +1,7 @@
 package com.omnixys.address.services;
 
 import com.omnixys.address.models.entity.PostalCode;
+import com.omnixys.address.models.entity.State;
 import com.omnixys.address.repository.PostalCodeRepository;
 import jakarta.persistence.criteria.Predicate;
 import lombok.RequiredArgsConstructor;
@@ -21,23 +22,29 @@ public class PostalCodeService {
 
     private final PostalCodeRepository repository;
 
+    public PostalCode findByCodeAndCityId(final String name, final UUID cityId) {
+        log.debug("Fetching state by name={} and city={}", name, cityId);
 
-    // -----------------------------------
-    // findById
-    // -----------------------------------
+        return repository.findByCodeAndCityId(name, cityId)
+                .orElseThrow(() -> {
+                    log.warn("PostalCode not found for code={} and city={}", name, cityId);
+                    return new IllegalArgumentException("PostalCode not found: " + name);
+                });
+    }
+
     public PostalCode findById(UUID id) {
         return repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("PostalCode not found: " + id));
     }
 
-    public List<PostalCode> findByZip(String zip) {
+    public List<PostalCode> findByCode(String code) {
 
-        log.debug("Searching PostalCode by zip={}", zip);
+        log.debug("Searching PostalCode by code={}", code);
 
-        var postalCodes =  repository.findByZipIgnoreCase(zip);
+        var postalCodes =  repository.findByCodeIgnoreCase(code);
    if(postalCodes.isEmpty()) {
-                    log.warn("PostalCode not found for zip={}", zip);
-                    throw new IllegalArgumentException("PostalCode not found: " + zip);
+                    log.warn("PostalCode not found for code={}", code);
+                    throw new IllegalArgumentException("PostalCode not found: " + code);
                 }
    return postalCodes;
     }
@@ -48,7 +55,7 @@ public class PostalCodeService {
     public Page<PostalCode> find(
             UUID countryId,
             UUID cityId,
-            String zip,
+            String code,
             Pageable pageable
     ) {
 
@@ -64,11 +71,11 @@ public class PostalCodeService {
                 predicates.add(cb.equal(root.get("city").get("id"), cityId));
             }
 
-            if (zip != null && !zip.isBlank()) {
+            if (code != null && !code.isBlank()) {
                 predicates.add(
                         cb.like(
-                                cb.lower(root.get("zip")),
-                                "%" + zip.toLowerCase() + "%"
+                                cb.lower(root.get("code")),
+                                "%" + code.toLowerCase() + "%"
                         )
                 );
             }

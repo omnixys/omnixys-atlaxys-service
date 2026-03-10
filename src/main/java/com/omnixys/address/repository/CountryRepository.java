@@ -1,6 +1,7 @@
 package com.omnixys.address.repository;
 
 import com.omnixys.address.models.entity.Country;
+import lombok.NonNull;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -23,6 +24,8 @@ public interface CountryRepository extends JpaRepository<Country, UUID>, JpaSpec
     })
     Optional<Country> findByIso2IgnoreCase(String iso2);
     Optional<Country> findByIso3IgnoreCase(String iso3);
+
+    @NonNull
     Optional<Country> findByName(String name);
 
     @EntityGraph(attributePaths = {

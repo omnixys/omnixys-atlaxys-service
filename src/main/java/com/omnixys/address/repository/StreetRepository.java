@@ -1,7 +1,9 @@
 package com.omnixys.address.repository;
 
 import com.omnixys.address.models.entity.City;
+import com.omnixys.address.models.entity.State;
 import com.omnixys.address.models.entity.Street;
+import lombok.NonNull;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,6 +15,12 @@ import java.util.UUID;
 
 public interface StreetRepository extends JpaRepository<Street, UUID> {
 
+    @NonNull
+    Optional<Street> findByNameAndCityId(final String name, final UUID cityId);
+
+    @Override
+    @NonNull
+    Optional<Street> findById(UUID id);
 
     @Query("""
             select s

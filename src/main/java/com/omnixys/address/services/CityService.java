@@ -2,6 +2,7 @@ package com.omnixys.address.services;
 
 import com.omnixys.address.models.entity.City;
 import com.omnixys.address.models.entity.PostalCode;
+import com.omnixys.address.models.entity.State;
 import com.omnixys.address.repository.CityRepository;
 import com.omnixys.address.repository.PostalCodeRepository;
 import jakarta.persistence.criteria.Predicate;
@@ -25,9 +26,18 @@ public class CityService {
     private final CityRepository repository;
     private final PostalCodeService  postalCodeService;
 
-    // -----------------------------------
-    // findById
-    // -----------------------------------
+
+    public City findByNameAndStateId(final String name, final UUID stateId) {
+        log.debug("Fetching city by name={} and stateId={}", name, stateId);
+
+        return repository.findByNameAndStateId(name, stateId)
+                .orElseThrow(() -> {
+                    log.warn("city not found for name={} and stateId={}", name, stateId);
+                    return new IllegalArgumentException("city not found: " + name);
+                });
+    }
+
+
     public City findById(UUID id) {
         return repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("City not found: " + id));
@@ -94,16 +104,16 @@ public class CityService {
 
 
     // -----------------------------------
-    // Find by ZIP String
+    // Find by code String
     // -----------------------------------
-    public List<City> findByPostalCode(String zip) {
+    public List<City> findByPostalCode(String code) {
 
-        log.debug("findByPostalCode(String) called with zip={}", zip);
+        log.debug("findByPostalCode(String) called with code={}", code);
 
-        var postalCodes = postalCodeService.findByZip(zip);
+        var postalCodes = postalCodeService.findByCode(code);
 
         if (postalCodes.isEmpty()) {
-            log.warn("No postal codes found for zip={}", zip);
+            log.warn("No postal codes found for code={}", code);
             return null;
         }
 
@@ -111,7 +121,7 @@ public class CityService {
                 .map(PostalCode::getCity)
                 .toList();
 
-        log.debug("Resolved {} cities for zip={}", cities.size(), zip);
+        log.debug("Resolved {} cities for code={}", cities.size(), code);
         return cities;
     }
 

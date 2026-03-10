@@ -47,8 +47,8 @@ public class GlobalPostalImportService {
             importCitiesJson(connection, citiesJson);
             mergeCitiesFromJson(connection);
 
-            importGeoNamesZip(connection, geoNamesTxt);
-//            mergeStatesFromZip(connection);
+            importGeoNamesCity(connection, geoNamesTxt);
+//            mergeStatesFromCity(connection);
             mergePostalCodes(connection);
 
             dropStagingTables(connection);
@@ -165,7 +165,7 @@ public class GlobalPostalImportService {
         }
     }
 
-    private void mergeStatesFromZip(Connection connection) throws Exception {
+    private void mergeStatesFromCity(Connection connection) throws Exception {
 
         try (Statement stmt = connection.createStatement()) {
 
@@ -192,7 +192,7 @@ public class GlobalPostalImportService {
 
             stmt.execute("""
             INSERT INTO address.postal_code
-                (country_id, city_id, zip, location, accuracy)
+                (country_id, city_id, code, location, accuracy)
             SELECT
                 c.id,
                 ci.id,
@@ -214,12 +214,12 @@ public class GlobalPostalImportService {
              AND lower(ci.name) = lower(s.place_name)
             WHERE s.postal_code IS NOT NULL
               AND s.postal_code <> ''
-            ON CONFLICT (country_id, city_id, zip) DO NOTHING
+            ON CONFLICT (country_id, city_id, code) DO NOTHING
         """);
         }
     }
 
-    private void importGeoNamesZip(Connection connection, ClassPathResource resource) throws Exception {
+    private void importGeoNamesCity(Connection connection, ClassPathResource resource) throws Exception {
 
         try (Statement stmt = connection.createStatement()) {
             stmt.execute("DROP TABLE IF EXISTS address.staging_postal");

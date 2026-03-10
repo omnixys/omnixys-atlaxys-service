@@ -25,9 +25,16 @@ public class StateService {
     public final StateRepository stateRepository;
     private final CountryRepository countryRepository;
 
-    // =====================================================
-    // FIND BY ID
-    // =====================================================
+    public State findByName(final String name) {
+        log.debug("Fetching state by name={}", name);
+
+        return stateRepository.findByName(name)
+                .orElseThrow(() -> {
+                    log.warn("State not found for name={}", name);
+                    return new IllegalArgumentException("State not found: " + name);
+                });
+    }
+
 
     public State findById(UUID id) {
         log.debug("Fetching state by id={}", id);

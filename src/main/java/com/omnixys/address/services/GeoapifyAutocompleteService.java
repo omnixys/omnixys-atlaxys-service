@@ -18,7 +18,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestClient;
-import org.springframework.web.util.UriUtils;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -153,7 +152,7 @@ public class GeoapifyAutocompleteService {
 
         // (1) Strong resolver: zip + country iso2, but may return multiple rows
         if (!isBlank(p.postalCode())) {
-            List<PostalCode> candidates = postalCodeRepository.findAllByCountryIso2AndZip(iso2, p.postalCode().trim());
+            List<PostalCode> candidates = postalCodeRepository.findAllByCountryIso2AndCode(iso2, p.postalCode().trim());
 
             if (!candidates.isEmpty()) {
                 // 1) Prefer exact city name match (case-insensitive)

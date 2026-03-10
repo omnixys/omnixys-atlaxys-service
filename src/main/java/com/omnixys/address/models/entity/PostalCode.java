@@ -3,14 +3,11 @@ package com.omnixys.address.models.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.UUID;
 
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import org.locationtech.jts.geom.Point;
@@ -62,7 +59,7 @@ public class PostalCode extends BaseEntity {
     // -----------------------------------
 
     @Column(nullable = false, length = 20)
-    private String zip;
+    private String code;
 
     @JdbcTypeCode(SqlTypes.GEOGRAPHY)
     @Column(columnDefinition = "geography(Point,4326)")

@@ -1,5 +1,6 @@
 package com.omnixys.address.resolvers;
 
+import com.omnixys.address.models.entity.State;
 import com.omnixys.address.models.inputs.PostalCodeFilterInput;
 import com.omnixys.address.models.entity.PostalCode;
 import com.omnixys.address.services.PostalCodeService;
@@ -20,9 +21,13 @@ public class PostalCodeQueryResolver {
 
     private final PostalCodeService postalCodeService;
 
-    // -----------------------------------
-    // findById
-    // -----------------------------------
+    @QueryMapping
+    public PostalCode getPostalCodeByNameAndCity(@Argument final String code, @Argument final UUID cityId) {
+
+        log.debug("GraphQL: postalCodeByNameAndCity code={}, cityId={}", code, cityId);
+        return postalCodeService.findByCodeAndCityId(code, cityId);
+    }
+
     public PostalCode postalCodeById(@Argument UUID id) {
         return postalCodeService.findById(id);
     }

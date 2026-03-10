@@ -41,29 +41,39 @@ management:
 
 # Spring Boot Einstellungen
 spring:
-  #  kafka:
-  #    bootstrap-servers: ${app.kafka.host}:9092
-  #    consumer:
-  #      group-id: ${app.groupId}
-  #      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-  #      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
-  #      properties:
-  #        spring:
-  #          json:
-  #            type:
-  #              mapping: >
-  #                com.omnixys.payment.models.dto.NewPaymentIdDTO:com.omnixys.address.models.dto.NewPaymentIdDTO
-  #            trusted:
-  #              packages:
-  #                - com.omnixys.payment.models.dto
-  #          deserializer:
-  #            value:
-  #              delegate:
-  #                class: org.springframework.kafka.support.serializer.JsonDeserializer
-  #    producer:
-  #      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-  #      # value-serializer: org.apache.kafka.common.serialization.StringSerializer
-  #      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  data:
+    redis:
+      host: localhost #${app.valkey.host}
+      port: 6380      #${app.valkey.port}
+      password: DeinStarkesPasswort  #${app.valkey.password}
+      timeout: 2s
+  kafka:
+    bootstrap-servers: ${app.kafka.host}:9092
+    consumer:
+      group-id: ${app.groupId}
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+#      properties:
+#        spring:
+#          json:
+#            type:
+#              mapping: >
+#                com.omnixys.address.models.dto.AddUserAddressesDTO:com.omnixys.address.models.dto.AddUserAddressesDTO
+#            trusted:
+#              packages:
+#                - com.omnixys.omnixys.address.models.dto.AddUserAddressesDTO
+#          deserializer:
+#            value:
+#              delegate:
+#                class: org.springframework.kafka.support.serializer.JsonDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      # value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
   checkpoint.restore: onRefresh
 
@@ -114,8 +124,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/realms/omnixys
-#          issuer-uri: ${app.keycloak.uri}
+          issuer-uri: ${app.keycloak.uri}
 
 
 # Applikationsspezifische Einstellungen
@@ -135,6 +144,11 @@ app:
     port: ${KC_SERVICE_PORT}
     realm: ${KC_SERVICE_REALM}
     client-id: ${KC_SERVICE_CLIENT_ID}
+
+  valkey:
+    host: ${VALKEY_HOST}
+    port: ${VALKEY_PORT}
+    password: ${VALKEY_PASSWORD}
 
   tracing:
     tempo: ${TEMPO_HOST}

@@ -1,9 +1,11 @@
 package com.omnixys.address.resolvers;
 
+import com.omnixys.address.models.entity.State;
 import com.omnixys.address.models.inputs.CityFilterInput;
 import com.omnixys.address.models.entity.City;
 import com.omnixys.address.services.CityService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -14,11 +16,18 @@ import java.util.UUID;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class CityResolver {
     private final CityService cityService;
-    // -----------------------------------
-    // findById
-    // -----------------------------------
+
+    @QueryMapping
+    public City getCityByNameAndState(@Argument final String name, @Argument final UUID stateId) {
+
+        log.debug("GraphQL: cityByNameAndStateId name={}, stateId={}", name, stateId);
+        return cityService.findByNameAndStateId(name, stateId);
+    }
+
+
     public City cityById(@Argument UUID id) {
         return cityService.findById(id);
     }

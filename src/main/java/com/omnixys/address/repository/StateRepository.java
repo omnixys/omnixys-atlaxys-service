@@ -2,6 +2,7 @@ package com.omnixys.address.repository;
 
 import com.omnixys.address.models.entity.Country;
 import com.omnixys.address.models.entity.State;
+import lombok.NonNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -13,6 +14,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface StateRepository extends JpaRepository<State, UUID>, JpaSpecificationExecutor<State> {
+
+    @NonNull
+    Optional<State> findByName(final String name);
+
     Optional<State> findByCountryAndCode(Country country, String code);
 
     @EntityGraph(attributePaths = {
