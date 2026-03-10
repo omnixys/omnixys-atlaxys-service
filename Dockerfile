@@ -51,11 +51,11 @@ LABEL org.opencontainers.image.title="${APP_NAME}-service" \
       org.opencontainers.image.vendor="omnixys" \
       org.opencontainers.image.authors="caleb.gyamfi@omnixys.com" \
       org.opencontainers.image.base.name="azul/zulu-openjdk:${JAVA_VERSION}-jre" \
-      org.opencontainers.image.url="https://github.com/omnixys/omnixys-${APP_NAME}-service" \
-      org.opencontainers.image.source="https://github.com/omnixys/omnixys-${APP_NAME}-service" \
+      org.opencontainers.image.url="https://github.com/omnixys/${APP_NAME}-service" \
+      org.opencontainers.image.source="https://github.com/omnixys/${APP_NAME}-service" \
       org.opencontainers.image.created="${CREATED}" \
       org.opencontainers.image.revision="${REVISION}" \
-      org.opencontainers.image.documentation="https://github.com/omnixys/omnixys-${APP_NAME}-service/blob/main/README.md"
+      org.opencontainers.image.documentation="https://github.com/omnixys/${APP_NAME}-service/blob/main/README.md"
 
 WORKDIR /workspace
 
