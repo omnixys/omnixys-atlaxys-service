@@ -48,7 +48,7 @@ spring:
       password: DeinStarkesPasswort  #${app.valkey.password}
       timeout: 2s
   kafka:
-    bootstrap-servers: ${app.kafka.host}:9092
+    bootstrap-servers: ${app.kafka.host}:{app.kafka.port}
     consumer:
       group-id: ${app.groupId}
       auto-offset-reset: earliest
@@ -155,6 +155,7 @@ app:
 
   kafka:
     host: ${KAFKA_HOST}
+    port: ${KAKFA_PORT}
 
 # Logging-Konfiguration
 logging:
