@@ -43,8 +43,8 @@ management:
 spring:
   data:
     redis:
-      host: localhost #${app.valkey.host}
-      port: 6380      #${app.valkey.port}
+      host: ${app.valkey.host}
+      port: ${app.valkey.port}
       password: DeinStarkesPasswort  #${app.valkey.password}
       timeout: 2s
   kafka:
