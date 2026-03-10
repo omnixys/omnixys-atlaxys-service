@@ -3,6 +3,14 @@
 All notable changes in this project will be documented in this file.
 
 
+## <small>1.2.1 (2026-03-10)</small>
+
+* fix(add auth): add authentication ([bda56cf32636f0249c5411863d75dd9ffe6d39b2](https://github.com/omnixys/address-service/commit/bda56cf32636f0249c5411863d75dd9ffe6d39b2))
+* fix(env): add kafka port ([1dc1079bd53cbc5357429d4d0e2247084f110c8f](https://github.com/omnixys/address-service/commit/1dc1079bd53cbc5357429d4d0e2247084f110c8f))
+* fix(env): add kafka port ([227618225111744e143cc937d6ea9b4c33766cbf](https://github.com/omnixys/address-service/commit/227618225111744e143cc937d6ea9b4c33766cbf))
+* Merge branch 'main' of https://github.com/omnixys/address-service ([f53c6dcc32e5a921697a3dd01ced80075ffac391](https://github.com/omnixys/address-service/commit/f53c6dcc32e5a921697a3dd01ced80075ffac391))
+* fix(repo): fix Repo name ([279afe0470fd203a5f8aaf8611d183146f3ecbb8](https://github.com/omnixys/address-service/commit/279afe0470fd203a5f8aaf8611d183146f3ecbb8))
+
 ## 1.2.0 (2026-03-10)
 
 * feat(DB-schema): add User address schema (1.4)) ([a2d238cad7aec89ab73258e81f1c31c76585f766](https://github.com/omnixys/omnixys-address-service/commit/a2d238cad7aec89ab73258e81f1c31c76585f766))
