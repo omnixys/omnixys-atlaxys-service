@@ -2,10 +2,10 @@ package com.omnixys.address.services;
 
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.ObjectMapper;
-import com.omnixys.address.models.dto.CountryDTO;
-import com.omnixys.address.models.dto.CountryDetailsDTO;
-import com.omnixys.address.models.entity.*;
-import com.omnixys.address.models.entity.Currency;
+import com.omnixys.address.models.dtos.CountryDTO;
+import com.omnixys.address.models.dtos.CountryDetailsDTO;
+import com.omnixys.address.models.entitys.*;
+import com.omnixys.address.models.entitys.Currency;
 import com.omnixys.address.repository.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

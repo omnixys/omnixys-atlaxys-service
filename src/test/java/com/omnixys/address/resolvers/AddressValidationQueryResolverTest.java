@@ -1,7 +1,7 @@
 package com.omnixys.address.resolvers;
 
 import com.omnixys.address.models.inputs.AddressValidationInput;
-import com.omnixys.address.models.payload.AddressValidationPayload;
+import com.omnixys.address.models.payloads.AddressValidationPayload;
 import com.omnixys.address.services.GeoapifyAddressValidationService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

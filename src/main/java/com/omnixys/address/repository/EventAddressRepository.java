@@ -1,6 +1,6 @@
 package com.omnixys.address.repository;
 
-import com.omnixys.address.models.entity.EventAddress;
+import com.omnixys.address.models.entitys.EventAddress;
 import lombok.NonNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -19,35 +19,10 @@ public interface EventAddressRepository extends JpaRepository<EventAddress, UUID
     @NonNull
     Optional<EventAddress> findById(UUID id);
 
-//    @Query("""
-//SELECT new com.omnixys.address.models.payload.EventAddressPayload(
-//    ea.id,
-//    ea.eventId,
-//    c.name,
-//    s.name,
-//    ci.name,
-//    pc.code,
-//    st.name,
-//    hn.number,
-//    ea.additionalInfo,
-//    1,
-//    1
-//)
-//FROM EventAddress ea
-//LEFT JOIN Country c ON c.id = ea.countryId
-//LEFT JOIN State s ON s.id = ea.stateId
-//LEFT JOIN City ci ON ci.id = ea.cityId
-//LEFT JOIN PostalCode pc ON pc.id = ea.postalCodeId
-//LEFT JOIN Street st ON st.id = ea.streetId
-//LEFT JOIN HouseNumber hn ON hn.id = ea.houseNumberId
-//WHERE ea.eventId = :eventId
-//""")
-//    EventAddressPayload findPayloadByEventId(UUID eventId);
-
     /**
      * Native query because PostGIS functions are required.
      */
-    @Query(value = """
+    String PROJECTION_SELECT = """
         SELECT
             ea.id AS id,
             ea.event_id AS "eventId",
@@ -67,8 +42,11 @@ public interface EventAddressRepository extends JpaRepository<EventAddress, UUID
         LEFT JOIN postal_code pc ON pc.id = ea.postal_code_id
         LEFT JOIN street st ON st.id = ea.street_id
         LEFT JOIN house_number hn ON hn.id = ea.house_number_id
-        WHERE ea.event_id = :eventId
-        LIMIT 1
-    """, nativeQuery = true)
+        """;
+
+    @Query(value = PROJECTION_SELECT + "WHERE ea.id = :id\nLIMIT 1", nativeQuery = true)
+    Optional<EventAddressProjection> findProjectedById(UUID id);
+
+    @Query(value = PROJECTION_SELECT + "WHERE ea.event_id = :eventId\nLIMIT 1", nativeQuery = true)
     Optional<EventAddressProjection> findProjectedByEventId(UUID eventId);
 }

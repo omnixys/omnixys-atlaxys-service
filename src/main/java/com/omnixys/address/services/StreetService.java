@@ -1,7 +1,7 @@
 package com.omnixys.address.services;
 
-import com.omnixys.address.models.entity.State;
-import com.omnixys.address.models.entity.Street;
+import com.omnixys.address.models.entitys.State;
+import com.omnixys.address.models.entitys.Street;
 import com.omnixys.address.repository.StreetRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,6 @@
 package com.omnixys.address.repository;
 
-import com.omnixys.address.models.entity.Language;
+import com.omnixys.address.models.entitys.Language;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

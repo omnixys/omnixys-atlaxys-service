@@ -1,6 +1,6 @@
 package com.omnixys.address.repository;
 
-import com.omnixys.address.models.entity.Currency;
+import com.omnixys.address.models.entitys.Currency;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

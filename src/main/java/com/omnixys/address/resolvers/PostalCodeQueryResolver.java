@@ -1,8 +1,8 @@
 package com.omnixys.address.resolvers;
 
-import com.omnixys.address.models.entity.State;
+import com.omnixys.address.models.entitys.State;
 import com.omnixys.address.models.inputs.PostalCodeFilterInput;
-import com.omnixys.address.models.entity.PostalCode;
+import com.omnixys.address.models.entitys.PostalCode;
 import com.omnixys.address.services.PostalCodeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

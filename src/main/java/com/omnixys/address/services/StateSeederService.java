@@ -2,8 +2,8 @@ package com.omnixys.address.services;
 
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.ObjectMapper;
-import com.omnixys.address.models.dto.StateDTO;
-import com.omnixys.address.models.entity.*;
+import com.omnixys.address.models.dtos.StateDTO;
+import com.omnixys.address.models.entitys.*;
 import com.omnixys.address.repository.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

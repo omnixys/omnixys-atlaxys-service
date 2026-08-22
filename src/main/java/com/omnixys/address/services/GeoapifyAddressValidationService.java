@@ -1,8 +1,8 @@
 package com.omnixys.address.services;
 
-import com.omnixys.address.models.dto.GeoapifyGeocodeResponse;
+import com.omnixys.address.models.dtos.GeoapifyGeocodeResponse;
 import com.omnixys.address.models.inputs.AddressValidationInput;
-import com.omnixys.address.models.payload.AddressValidationPayload;
+import com.omnixys.address.models.payloads.AddressValidationPayload;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

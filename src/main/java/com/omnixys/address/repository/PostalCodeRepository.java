@@ -1,8 +1,8 @@
 package com.omnixys.address.repository;
 
-import com.omnixys.address.models.entity.City;
-import com.omnixys.address.models.entity.PostalCode;
-import com.omnixys.address.models.entity.State;
+import com.omnixys.address.models.entitys.City;
+import com.omnixys.address.models.entitys.PostalCode;
+import com.omnixys.address.models.entitys.State;
 import jakarta.validation.constraints.NotNull;
 import lombok.NonNull;
 import org.springframework.data.domain.Page;

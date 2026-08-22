@@ -1,6 +1,6 @@
 package com.omnixys.address.services;
 
-import com.omnixys.address.models.entity.Country;
+import com.omnixys.address.models.entitys.Country;
 import com.omnixys.address.models.inputs.CountryFilterInput;
 import com.omnixys.address.repository.CountryRepository;
 import com.omnixys.logger.logging.OmnixysLogger;

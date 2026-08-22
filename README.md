@@ -40,18 +40,38 @@ Address provides:
 
 ## 🏗 Architecture
 
+Spiegelt die TS-Referenzarchitektur 1:1 (siehe `docs/architecture/service-architecture-charter.md`).
+
+```text
+src/main/java/com/omnixys/address/
+├── AddressApplication.java       Spring-Boot-Main
+├── config/                       AppProperties, GraphqlConfig, CorsConfig, HttpsConfig, BannerService
+├── core/                         Scalars, globale Beans
+├── security/http/                SecurityHttpHeadersFilter (CSP/HSTS-Pendant zu TS helmet)
+├── health/                       HealthController + Database/Keycloak/Kafka/Valkey-Indicators
+├── analytics/                    AnalyticsOutboxService, AnalyticsOutboxPublisher
+├── handlers/                     Kafka-Listener (AuthenticationHandler, EventHandler)
+├── repository/                   Spring-Data-JPA-Repositories (Persistenz, mappt auf TS prisma/)
+├── services/                     user/event: read- und write-services (CQRS-Split)
+├── resolvers/                    GraphQL-Resolver (UserAddress, EventAddress, Country, …)
+└── models/                       entitys/ dtos/ inputs/ payloads/ mappers/ enums/
+```
+
 ### Tech Stack
 
 | Layer      | Technology                                  |
 | ---------- | ------------------------------------------- |
-| Language   | Java 25                                     |
-| Framework  | Spring Boot                                 |
+| Language   | Java 26                                     |
+| Framework  | Spring Boot 4 (GraphQL)                     |
 | Database   | PostgreSQL 18                               |
 | Geo Engine | PostGIS                                     |
 | Migration  | Flyway                                      |
 | ORM        | Spring Data JPA                             |
 | Indexing   | GIST + TRGM                                 |
 | Seeding    | External APIs (Countries, States, GeoNames) |
+| Messaging  | Kafka (@KafkaEvent)                         |
+| Cache      | Valkey                                      |
+| Health     | /health/liveness, /health/readiness         |
 
 ---
 
@@ -280,10 +300,11 @@ Ensure PostGIS image compatibility for architecture (ARM vs AMD).
 
 Requirements:
 
-- Java 25
-- PostgreSQL 16
+- Java 26
+- PostgreSQL 18
 - PostGIS extension
 - Flyway migrations enabled
+- Kafka, Valkey, Keycloak (via Omnixys-Infra compose)
 
 Enable extension manually if needed:
 
@@ -297,8 +318,6 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 ## 🛡 Future Enhancements
 
-- GraphQL interface
-- Kafka integration for geo updates
 - Reverse geocoding endpoint
 - Geo-hashing optimization
 - Country-specific address formatting rules

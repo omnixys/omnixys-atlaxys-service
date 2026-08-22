@@ -1,9 +1,10 @@
 package com.omnixys.address.resolvers;
 
-import com.omnixys.address.models.entity.UserAddress;
+import com.omnixys.address.models.entitys.UserAddress;
 import com.omnixys.address.models.enums.AddressType;
 import com.omnixys.address.models.inputs.CreateUserAddressInput;
-import com.omnixys.address.services.UserAddressService;
+import com.omnixys.address.services.UserAddressReadService;
+import com.omnixys.address.services.UserAddressWriteService;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,10 @@ import static org.mockito.Mockito.when;
 class UserAddressResolverTest {
 
     @Mock
-    private UserAddressService userAddressService;
+    private UserAddressReadService readService;
+
+    @Mock
+    private UserAddressWriteService writeService;
 
     @InjectMocks
     private UserAddressResolver resolver;
@@ -57,7 +61,7 @@ class UserAddressResolverTest {
                 .addressType(AddressType.HOME)
                 .build();
 
-        when(userAddressService.createUserAddress(any(CreateUserAddressInput.class)))
+        when(writeService.createUserAddress(any(CreateUserAddressInput.class)))
                 .thenReturn(address);
 
         var result = resolver.createUserAddress(input);

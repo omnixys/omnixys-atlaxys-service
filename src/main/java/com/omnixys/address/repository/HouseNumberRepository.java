@@ -1,6 +1,6 @@
 package com.omnixys.address.repository;
 
-import com.omnixys.address.models.entity.HouseNumber;
+import com.omnixys.address.models.entitys.HouseNumber;
 import lombok.NonNull;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

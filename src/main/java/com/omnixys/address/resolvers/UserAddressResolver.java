@@ -1,11 +1,12 @@
 package com.omnixys.address.resolvers;
 
-import com.omnixys.address.models.entity.UserAddress;
+import com.omnixys.address.models.entitys.UserAddress;
 import com.omnixys.address.models.inputs.CreateUserAddressInput;
 import com.omnixys.address.models.inputs.UpdateUserAddressInput;
 import com.omnixys.address.models.inputs.UserAddressFilter;
-import com.omnixys.address.models.payload.UserAddressPayload;
-import com.omnixys.address.services.UserAddressService;
+import com.omnixys.address.models.payloads.UserAddressPayload;
+import com.omnixys.address.services.UserAddressReadService;
+import com.omnixys.address.services.UserAddressWriteService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,37 +23,37 @@ import java.util.UUID;
 @Slf4j
 public class UserAddressResolver {
 
-    private final UserAddressService service;
-
+    private final UserAddressReadService readService;
+    private final UserAddressWriteService writeService;
 
     @MutationMapping
     public UserAddress createUserAddress(@Argument @Valid CreateUserAddressInput input) {
-        return service.createUserAddress(input);
+        return writeService.createUserAddress(input);
     }
 
     @MutationMapping
     public UserAddress updateUserAddress(@Argument @Valid UpdateUserAddressInput input) {
-        return service.updateUserAddress(input);
+        return writeService.updateUserAddress(input);
     }
 
     @MutationMapping
     public Boolean deleteUserAddressByUserId(@Argument UUID userId) {
-        return service.deleteUserAddressByUserId(userId);
+        return writeService.deleteUserAddressByUserId(userId);
     }
 
     @QueryMapping
     public UserAddressPayload userAddressById(@Argument UUID id) {
-        return service.findById(id).orElse(null);
+        return readService.findById(id).orElse(null);
     }
 
     @QueryMapping
     public List<UserAddressPayload> getUserAddressesByUserId(@Argument UUID userId) {
         log.debug("getUserAddressesByUserId: userId={}", userId);
-        return service.findByUserId(userId);
+        return readService.findByUserId(userId);
     }
 
     @QueryMapping
     public List<UserAddressPayload> userAddresses(@Argument UserAddressFilter filter) {
-        return service.find(filter);
+        return readService.find(filter);
     }
 }

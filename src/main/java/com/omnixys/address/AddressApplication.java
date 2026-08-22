@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
-import static com.omnixys.address.util.Banner.TEXT;
+import static com.omnixys.address.config.Banner.TEXT;
 
 @SpringBootApplication(proxyBeanMethods = false)
 @EnableConfigurationProperties({AppProperties.class})

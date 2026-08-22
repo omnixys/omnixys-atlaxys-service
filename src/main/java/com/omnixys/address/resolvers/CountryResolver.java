@@ -1,6 +1,6 @@
 package com.omnixys.address.resolvers;
 
-import com.omnixys.address.models.entity.Country;
+import com.omnixys.address.models.entitys.Country;
 import com.omnixys.address.models.inputs.CountryFilterInput;
 import com.omnixys.address.services.CountryService;
 import lombok.RequiredArgsConstructor;
@@ -26,33 +26,27 @@ public class CountryResolver {
     public Country countryById(@Argument UUID id) {
         log.debug("GraphQL: countryById id={}", id);
         return countryService.findById(id);
-//        return countryMapper.toCountryPayload(country);
     }
 
     @QueryMapping
     public Country getCountryByName(@Argument String name) {
         log.debug("GraphQL: countryByName name={}", name);
         return countryService.findByName(name);
-//        return countryMapper.toCountryPayload(country);
     }
 
     public Country countryByIso2(@Argument String iso2) {
         log.debug("GraphQL: countryByIso2 iso2={}", iso2);
         return countryService.findByIso2(iso2);
-//        return countryMapper.toCountryPayload(country);
     }
 
     public Country countryByIso3(@Argument String iso3) {
         log.debug("GraphQL: countryByIso3 iso3={}", iso3);
         return countryService.findByIso3(iso3);
-//        return countryMapper.toCountryPayload(country);
     }
 
     @QueryMapping
     public List<Country> getAllCountries() {
         return countryService.findAllCountries();
-//        return countryMapper.toCountryPayloadList(countries);
-
     }
 
     // =====================================================
@@ -80,7 +74,5 @@ public class CountryResolver {
                 .findAll(filter, pageable)
                 .stream()
                 .toList();
-
-//        return countryMapper.toCountryPayloadList(countries);
     }
 }

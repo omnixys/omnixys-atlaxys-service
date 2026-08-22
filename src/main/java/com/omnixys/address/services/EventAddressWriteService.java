@@ -1,0 +1,180 @@
+package com.omnixys.address.services;
+
+import com.omnixys.address.analytics.AnalyticsOutboxService;
+import com.omnixys.address.errors.AddressNotFoundException;
+import com.omnixys.address.models.entitys.EventAddress;
+import com.omnixys.address.models.inputs.CreateEventAddressDTO;
+import com.omnixys.address.models.inputs.CreateEventAddressInput;
+import com.omnixys.address.models.inputs.UpdateEventAddressInput;
+import com.omnixys.address.models.payloads.EventAddressPayload;
+import com.omnixys.address.repository.EventAddressRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Collection;
+import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
+
+@Slf4j
+@Service
+@RequiredArgsConstructor
+@Transactional
+public class EventAddressWriteService {
+
+    private final EventAddressRepository repository;
+    private final CountryService countryService;
+    private final StateService stateService;
+    private final CityService cityService;
+    private final PostalCodeService postalCodeService;
+    private final StreetService streetService;
+    private final HouseNumberService houseNumberService;
+    private final AnalyticsOutboxService analyticsOutbox;
+    private final EventAddressReadService readService;
+
+    /**
+     * Creates a new EventAddress using a strict "find-or-create" strategy.
+     * This guarantees that address components always exist and prevents runtime failures.
+     */
+    public void createEventAddress(CreateEventAddressDTO input) {
+
+        log.debug("Creating event address for eventId={}", input.eventId());
+
+        var resolved = resolveAddress(input);
+
+        EventAddress address = EventAddress.builder()
+                .eventId(input.eventId())
+                .countryId(resolved.countryId())
+                .stateId(resolved.stateId())
+                .cityId(resolved.cityId())
+                .postalCodeId(resolved.postalCodeId())
+                .streetId(resolved.streetId())
+                .houseNumberId(resolved.houseNumberId())
+                .additionalInfo(input.additionalInfo())
+                .build();
+
+        repository.save(address);
+        analyticsOutbox.enqueue("address.created.v1", "AddressCreated",
+                "event-address", address.getId(), null, Map.of("eventId", input.eventId().toString()));
+    }
+
+    public EventAddressPayload createEventAddress(CreateEventAddressInput input) {
+
+        log.debug("Creating event address for eventId={}", input.eventId());
+
+        EventAddress address = EventAddress.builder()
+                .eventId(input.eventId())
+                .countryId(input.countryId())
+                .stateId(input.stateId())
+                .cityId(input.cityId())
+                .postalCodeId(input.postalCodeId())
+                .streetId(input.streetId())
+                .houseNumberId(input.houseNumberId())
+                .additionalInfo(input.additionalInfo())
+                .build();
+
+        repository.save(address);
+        analyticsOutbox.enqueue("address.created.v1", "AddressCreated",
+                "event-address", address.getId(), null, Map.of("eventId", input.eventId().toString()));
+
+        return readService.findById(address.getId());
+    }
+
+    /**
+     * Fully updates an address.
+     * Re-resolves all address components to ensure consistency.
+     */
+    public EventAddressPayload updateEventAddress(UpdateEventAddressInput input) {
+
+        log.debug("Updating event address id={}", input.id());
+
+        EventAddress address = repository.findById(input.id())
+                .orElseThrow(() -> new AddressNotFoundException(input.id()));
+
+        var streetId = streetService.findByNameAndCityId(input.street(), input.cityId()).getId();
+        var houseNumberId = houseNumberService.findByHouseNumberAndStreetId(input.houseNumber(), streetId).getId();
+
+        address.setCountryId(input.countryId());
+        address.setStateId(input.stateId());
+        address.setCityId(input.cityId());
+        address.setPostalCodeId(input.postalCodeId());
+        address.setStreetId(streetId);
+        address.setHouseNumberId(houseNumberId);
+        address.setAdditionalInfo(input.additionalInfo());
+
+        repository.save(address);
+        analyticsOutbox.enqueue("address.updated.v1", "AddressUpdated",
+                "event-address", address.getId(), null, Map.of("eventId", address.getEventId().toString()));
+
+        return readService.findById(address.getId());
+    }
+
+    public Boolean deleteEventAddressByEventId(UUID eventId) {
+        if (eventId == null) {
+            throw new IllegalArgumentException("eventId must not be null");
+        }
+        log.debug("Deleting event addresses for eventId={}", eventId);
+        repository.deleteByEventId(eventId);
+        analyticsOutbox.enqueue("address.deleted.v1", "AddressDeleted",
+                "event-address", eventId, null, Map.of("eventId", eventId.toString()));
+        return true;
+    }
+
+    public Boolean deleteEventAddressesByEventIds(Collection<UUID> eventIds) {
+        if (eventIds == null) {
+            throw new IllegalArgumentException("eventIds must not be null");
+        }
+
+        var validEventIds = eventIds.stream()
+                .filter(Objects::nonNull)
+                .distinct()
+                .toList();
+        if (validEventIds.isEmpty()) {
+            throw new IllegalArgumentException("At least one eventId is required");
+        }
+
+        log.debug("Deleting event addresses for eventIds={}", validEventIds);
+        validEventIds.forEach(eventId -> {
+            repository.deleteByEventId(eventId);
+            analyticsOutbox.enqueue("address.deleted.v1", "AddressDeleted",
+                    "event-address", eventId, null, Map.of("eventId", eventId.toString()));
+        });
+        return true;
+    }
+
+    /**
+     * Centralized resolution logic.
+     * Ensures consistent hierarchy resolution and avoids duplication.
+     */
+    private ResolvedAddress resolveAddress(CreateEventAddressDTO input) {
+        var countryId = countryService.findByName(input.country()).getId();
+        var stateId = stateService.findByNameAndCountryId(input.state(), countryId).getId();
+        var cityId = cityService.findByNameAndStateId(input.city(), stateId).getId();
+        var postalCodeId = postalCodeService.findByCodeAndCityId(input.postalCode(), cityId).getId();
+        var streetId = streetService.findByNameAndCityId(input.street(), cityId).getId();
+        var houseNumberId = houseNumberService.findByHouseNumberAndStreetId(input.houseNumber(), streetId).getId();
+
+        return new ResolvedAddress(
+                countryId,
+                stateId,
+                cityId,
+                postalCodeId,
+                streetId,
+                houseNumberId
+        );
+    }
+
+    /**
+     * Internal immutable structure for resolved IDs.
+     */
+    private record ResolvedAddress(
+            UUID countryId,
+            UUID stateId,
+            UUID cityId,
+            UUID postalCodeId,
+            UUID streetId,
+            UUID houseNumberId
+    ) {}
+}

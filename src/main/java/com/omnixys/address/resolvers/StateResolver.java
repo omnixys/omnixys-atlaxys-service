@@ -1,8 +1,8 @@
 package com.omnixys.address.resolvers;
 
-import com.omnixys.address.models.entity.State;
+import com.omnixys.address.models.entitys.State;
 import com.omnixys.address.models.inputs.StateFilterInput;
-import com.omnixys.address.models.payload.StatePage;
+import com.omnixys.address.models.payloads.StatePage;
 import com.omnixys.address.services.StateService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

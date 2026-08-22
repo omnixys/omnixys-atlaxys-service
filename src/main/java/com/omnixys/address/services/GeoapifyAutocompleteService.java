@@ -1,13 +1,13 @@
 package com.omnixys.address.services;
 
-import com.omnixys.address.models.dto.GeoapifyAutocompleteResponse;
-import com.omnixys.address.models.entity.City;
-import com.omnixys.address.models.entity.Country;
-import com.omnixys.address.models.entity.HouseNumber;
-import com.omnixys.address.models.entity.PostalCode;
-import com.omnixys.address.models.entity.Street;
-import com.omnixys.address.models.payload.AddressAutocompletePayload;
-import com.omnixys.address.models.payload.GeoLocationInfo;
+import com.omnixys.address.models.dtos.GeoapifyAutocompleteResponse;
+import com.omnixys.address.models.entitys.City;
+import com.omnixys.address.models.entitys.Country;
+import com.omnixys.address.models.entitys.HouseNumber;
+import com.omnixys.address.models.entitys.PostalCode;
+import com.omnixys.address.models.entitys.Street;
+import com.omnixys.address.models.payloads.AddressAutocompletePayload;
+import com.omnixys.address.models.payloads.GeoLocationInfo;
 import com.omnixys.address.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,8 +1,8 @@
 package com.omnixys.address.repository;
 
-import com.omnixys.address.models.entity.City;
-import com.omnixys.address.models.entity.State;
-import com.omnixys.address.models.entity.Street;
+import com.omnixys.address.models.entitys.City;
+import com.omnixys.address.models.entitys.State;
+import com.omnixys.address.models.entitys.Street;
 import lombok.NonNull;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

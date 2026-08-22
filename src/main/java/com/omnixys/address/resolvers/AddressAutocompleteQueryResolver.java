@@ -1,7 +1,7 @@
 package com.omnixys.address.resolvers;
 
-import com.omnixys.address.models.payload.AddressAutocompletePayload;
-import com.omnixys.address.models.payload.GeoLocationInfo;
+import com.omnixys.address.models.payloads.AddressAutocompletePayload;
+import com.omnixys.address.models.payloads.GeoLocationInfo;
 import com.omnixys.address.services.CountryService;
 import com.omnixys.address.services.GeoapifyAutocompleteService;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
 package com.omnixys.address.repository;
 
-import com.omnixys.address.models.entity.Country;
+import com.omnixys.address.models.entitys.Country;
 import lombok.NonNull;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;

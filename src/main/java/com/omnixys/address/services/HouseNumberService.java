@@ -1,6 +1,6 @@
 package com.omnixys.address.services;
 
-import com.omnixys.address.models.entity.HouseNumber;
+import com.omnixys.address.models.entitys.HouseNumber;
 import com.omnixys.address.repository.HouseNumberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

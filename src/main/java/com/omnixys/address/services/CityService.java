@@ -1,8 +1,8 @@
 package com.omnixys.address.services;
 
-import com.omnixys.address.models.entity.City;
-import com.omnixys.address.models.entity.PostalCode;
-import com.omnixys.address.models.entity.State;
+import com.omnixys.address.models.entitys.City;
+import com.omnixys.address.models.entitys.PostalCode;
+import com.omnixys.address.models.entitys.State;
 import com.omnixys.address.repository.CityRepository;
 import com.omnixys.address.repository.PostalCodeRepository;
 import jakarta.persistence.criteria.Predicate;

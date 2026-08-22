@@ -1,7 +1,7 @@
 package com.omnixys.address.services;
 
-import com.omnixys.address.models.entity.Country;
-import com.omnixys.address.models.entity.State;
+import com.omnixys.address.models.entitys.Country;
+import com.omnixys.address.models.entitys.State;
 import com.omnixys.address.models.inputs.StateFilterInput;
 import com.omnixys.address.repository.CountryRepository;
 import com.omnixys.address.repository.StateRepository;

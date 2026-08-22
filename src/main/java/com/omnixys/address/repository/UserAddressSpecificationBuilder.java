@@ -1,6 +1,6 @@
 package com.omnixys.address.repository;
 
-import com.omnixys.address.models.entity.UserAddress;
+import com.omnixys.address.models.entitys.UserAddress;
 import com.omnixys.address.models.inputs.UserAddressFilter;
 import org.springframework.data.jpa.domain.Specification;
 

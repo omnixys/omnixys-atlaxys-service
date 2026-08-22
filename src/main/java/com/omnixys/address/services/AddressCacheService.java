@@ -1,7 +1,7 @@
 package com.omnixys.address.services;
 
 import tools.jackson.databind.ObjectMapper;
-import com.omnixys.address.models.dto.SignupAddressCacheDTO;
+import com.omnixys.address.models.dtos.SignupAddressCacheDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
