@@ -80,11 +80,12 @@ public class GlobalPostalImportService {
 
         try (PipedInputStream pipedIn = new PipedInputStream(1 << 16)) {
 
+            PipedOutputStream pipedOut = new PipedOutputStream(pipedIn);
+
             final var writeError = new AtomicReference<RuntimeException>();
 
             Thread writerThread = Thread.ofVirtual().start(() -> {
-                try (PipedOutputStream pipedOut = new PipedOutputStream(pipedIn);
-                     var parser = objectMapper.createParser(resource.getInputStream());
+                try (var parser = objectMapper.createParser(resource.getInputStream());
                      var writer = new BufferedWriter(new OutputStreamWriter(pipedOut, StandardCharsets.UTF_8))) {
 
                     parser.nextToken(); // START_ARRAY
