@@ -3,6 +3,22 @@
 All notable changes in this project will be documented in this file.
 
 
+## [3.6.0](https://github.com/omnixys/address-service/compare/v3.5.0...v3.6.0) (2026-08-26)
+
+### Otel
+
+* **Otel:** add otel logs ([](https://github.com/omnixys/address-service/commit/99b2418728148d042de4de66149601b63e539b77))
+
+### Seed
+
+* **Seed:** add seed all admin api ([](https://github.com/omnixys/address-service/commit/e7dd3f43d13d0ae0dcb764d6ef11c7cbbde93efc))
+* **Seed:** Update GlobalPostalImportService.java ([](https://github.com/omnixys/address-service/commit/6eab81c70b91899155ecfc36dea594e9b939e77d))
+
+### Semver
+
+* **Semver:** add semver ([](https://github.com/omnixys/address-service/commit/3d99ebc94e29dfaf477802b07f2d1cae02259631))
+* **Semver:** add semver ([](https://github.com/omnixys/address-service/commit/ac759d4f0b18ac9225c2d008be09e0621c240da1))
+
 ## [3.5.0](https://github.com/omnixys/address-service/compare/v3.4.1...v3.5.0) (2026-08-03)
 
 ## [3.4.1](https://github.com/omnixys/address-service/compare/v3.4.0...v3.4.1) (2026-07-28)
