@@ -60,10 +60,10 @@ omnixys:
     resource-attributes:
       service.namespace: omnixys
       service.version: ${spring.application.version}
-      deployment.environment.name: ${app.env}
+      deployment.environment.name: ${DEPLOYMENT_ENVIRONMENT:${app.env}}
 
     logs:
-      enabled: true
+      enabled: ${OTEL_LOGS_ENABLED:true}
 
     tracing:
       graphql:
