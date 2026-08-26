@@ -129,15 +129,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: 📦 Install semantic-release deps
-        run: |
-          npm install -g semantic-release \
-            @semantic-release/changelog \
-            @semantic-release/git \
-            @semantic-release/github \
-            @semantic-release/commit-analyzer \
-            @semantic-release/release-notes-generator \
-            @semantic-release/exec \
-            conventional-changelog-conventionalcommits
+        run: pnpm install --frozen-lockfile
 
       - name: 🔐 Configure Maven settings.xml
         run: |
