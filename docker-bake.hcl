@@ -30,7 +30,7 @@ variable "APP_VERSION" {
 }
 
 variable "JAVA_VERSION" {
-  default = "26"
+  default = "26.0.2.1"
 }
 
 variable "CREATED" {
