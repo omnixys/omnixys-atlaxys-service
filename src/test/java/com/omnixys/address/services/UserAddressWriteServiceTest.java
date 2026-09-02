@@ -41,7 +41,7 @@ class UserAddressWriteServiceTest {
 
     @Test
     void createUserAddressWithValidInput() {
-        var userId = UUID.randomUUID();
+        var principalUserId = UUID.randomUUID();
         var streetId = UUID.randomUUID();
         var postalCodeId = UUID.randomUUID();
         var cityId = UUID.randomUUID();
@@ -50,7 +50,7 @@ class UserAddressWriteServiceTest {
         var addressId = UUID.randomUUID();
 
         var input = new CreateUserAddressInput(
-                userId,
+                UUID.randomUUID(),
                 AddressType.HOME,
                 streetId,
                 postalCodeId,
@@ -63,7 +63,7 @@ class UserAddressWriteServiceTest {
 
         var saved = UserAddress.builder()
                 .id(addressId)
-                .userId(userId)
+                .userId(principalUserId)
                 .countryId(countryId)
                 .stateId(stateId)
                 .cityId(cityId)
@@ -74,11 +74,11 @@ class UserAddressWriteServiceTest {
 
         when(repository.save(any(UserAddress.class))).thenReturn(saved);
 
-        var result = service.createUserAddress(input);
+        var result = service.createUserAddress(input, principalUserId);
 
         assertNotNull(result);
         assertEquals(addressId, result.getId());
-        assertEquals(userId, result.getUserId());
+        assertEquals(principalUserId, result.getUserId());
         assertEquals(AddressType.HOME, result.getAddressType());
         assertEquals(countryId, result.getCountryId());
         assertEquals(stateId, result.getStateId());
@@ -88,7 +88,7 @@ class UserAddressWriteServiceTest {
 
         verify(repository).save(addressCaptor.capture());
         var captured = addressCaptor.getValue();
-        assertEquals(userId, captured.getUserId());
+        assertEquals(principalUserId, captured.getUserId());
         assertEquals(AddressType.HOME, captured.getAddressType());
     }
 }

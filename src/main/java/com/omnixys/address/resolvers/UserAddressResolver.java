@@ -7,6 +7,7 @@ import com.omnixys.address.models.inputs.UserAddressFilter;
 import com.omnixys.address.models.payloads.UserAddressPayload;
 import com.omnixys.address.services.UserAddressReadService;
 import com.omnixys.address.services.UserAddressWriteService;
+import com.omnixys.context.ContextAccessor;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,19 +27,30 @@ public class UserAddressResolver {
     private final UserAddressReadService readService;
     private final UserAddressWriteService writeService;
 
+    private UUID resolveCurrentUserId() {
+        var context = ContextAccessor.get();
+        if (context == null || context.principal() == null || context.principal().userId() == null) {
+            throw new IllegalStateException("No authenticated principal with omnixys_user_id");
+        }
+        return UUID.fromString(context.principal().userId());
+    }
+
     @MutationMapping
     public UserAddress createUserAddress(@Argument @Valid CreateUserAddressInput input) {
-        return writeService.createUserAddress(input);
+        UUID principalUserId = resolveCurrentUserId();
+        return writeService.createUserAddress(input, principalUserId);
     }
 
     @MutationMapping
     public UserAddress updateUserAddress(@Argument @Valid UpdateUserAddressInput input) {
-        return writeService.updateUserAddress(input);
+        UUID principalUserId = resolveCurrentUserId();
+        return writeService.updateUserAddress(input, principalUserId);
     }
 
     @MutationMapping
-    public Boolean deleteUserAddressByUserId(@Argument UUID userId) {
-        return writeService.deleteUserAddressByUserId(userId);
+    public Boolean deleteUserAddressByUserId() {
+        UUID principalUserId = resolveCurrentUserId();
+        return writeService.deleteUserAddressByUserId(principalUserId);
     }
 
     @QueryMapping
@@ -47,9 +59,10 @@ public class UserAddressResolver {
     }
 
     @QueryMapping
-    public List<UserAddressPayload> getUserAddressesByUserId(@Argument UUID userId) {
-        log.debug("getUserAddressesByUserId: userId={}", userId);
-        return readService.findByUserId(userId);
+    public List<UserAddressPayload> getUserAddressesByUserId() {
+        UUID principalUserId = resolveCurrentUserId();
+        log.debug("getUserAddressesByUserId: userId={}", principalUserId);
+        return readService.findByUserId(principalUserId);
     }
 
     @QueryMapping
