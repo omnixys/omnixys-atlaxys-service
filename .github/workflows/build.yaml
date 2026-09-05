@@ -1,0 +1,102 @@
+name: Omnixys Maven Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+
+      
+concurrency:
+  group: pipeline-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  packages: write
+  pull-requests: write
+  issues: write
+  id-token: write
+
+env:
+  COSIGN_EXPERIMENTAL: 'true'
+  IMAGE_NAME: ${{ secrets.DOCKER_USER }}/${{ vars.SERVICE }}-service
+  IMAGE_NAME_REPOSITORY: ghcr.io/${{ github.repository }}
+
+jobs:
+  ci:
+    name: 🧪 CI – Build (Maven / Java ${{ matrix.java-version }})
+    runs-on: ubuntu-latest
+
+    if: >
+      !contains(github.event.head_commit.message, 'chore(release)')
+
+    strategy:
+      matrix:
+        java-version: [26]
+        node-version: [26.8.1]
+
+    steps:
+      - name: 🧾 Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: ☕ Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: ${{ matrix.java-version }}
+          cache: maven
+
+      - name: 🔐 Configure Maven settings.xml
+        run: |
+          mkdir -p ~/.m2
+          cat <<EOF > ~/.m2/settings.xml
+          <settings>
+             <servers>
+                 <server>
+                     <id>github</id>
+                     <username>${GPR_USER}</username>
+                        <password>${GPR_KEY}</password>
+                 </server>
+             
+                     <server>
+                     <id>github-starter</id>
+                     <username>${GPR_USER}</username>
+                        <password>${GPR_KEY}</password>
+                 </server>
+             
+                         <server>
+                     <id>github-bom</id>
+                     <username>${GPR_USER}</username>
+                        <password>${GPR_KEY}</password>
+                 </server>
+             
+                     <server>
+                   <id>github-observability</id>
+                     <username>${GPR_USER}</username>
+                        <password>${GPR_KEY}</password>
+                 </server>
+             
+                 <server>
+                   <id>github-kafka</id>
+                     <username>${GPR_USER}</username>
+                        <password>${GPR_KEY}</password>
+                 </server>
+             
+                 <server>
+                   <id>github-logger</id>
+                     <username>${GPR_USER}</username>
+                        <password>${GPR_KEY}</password>
+                 </server>
+             
+
+             </servers>
+          </settings>
+          EOF
+        env:
+          GPR_USER: ${{ github.actor }}
+          GPR_KEY: ${{ secrets.OMNIXYS_TOKEN }}
+
+      - name: 📦 Build
+        run: mvn -B clean verify

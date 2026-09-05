@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.14.0
 
-ARG JAVA_VERSION=26
+ARG JAVA_VERSION=26.0.2.1
 
 # ---------------------------------------------------------------------------------------
 # Stage 1: builder (Maven Build)

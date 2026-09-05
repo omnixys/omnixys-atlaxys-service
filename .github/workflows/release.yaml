@@ -4,10 +4,7 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - '**'
-
+      
 concurrency:
   group: pipeline-${{ github.ref }}
   cancel-in-progress: true
@@ -35,11 +32,11 @@ jobs:
     strategy:
       matrix:
         java-version: [26]
-        node-version: [24]
+        node-version: [26.8.1]
 
     steps:
       - name: 🧾 Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -111,7 +108,7 @@ jobs:
     strategy:
       matrix:
         java-version: [26]
-        node-version: [24]
+        node-version: [26.8.1]
 
     outputs:
       released: ${{ steps.semantic.outputs.released }}
@@ -119,19 +116,23 @@ jobs:
 
     steps:
       - name: 🧾 Checkout (FULL HISTORY)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - name: ⚙️ Setup Node
-        uses: actions/setup-node@v4
+      - name: ⚙️ Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          version: 11.24.0
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '26.8.1'
+          cache: 'pnpm'
 
       - name: 📦 Install semantic-release deps
-        run: |
-          corepack enable
-          pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: 🔐 Configure Maven settings.xml
         run: |
@@ -193,7 +194,7 @@ jobs:
         java-version: [26]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -311,8 +312,6 @@ jobs:
           cosign sign --yes --recursive ${{ env.IMAGE_NAME }}:${{ needs.release.outputs.version }}
           cosign sign --yes --recursive ${{ env.IMAGE_NAME }}:latest
 
-
-
   push-github:
     env:
       CURRENT_VERSION: ${{ needs.release.outputs.version }}
@@ -327,7 +326,7 @@ jobs:
         java-version: [26]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 

@@ -5,8 +5,12 @@ import com.omnixys.address.models.enums.AddressType;
 import com.omnixys.address.models.inputs.CreateUserAddressInput;
 import com.omnixys.address.services.UserAddressReadService;
 import com.omnixys.address.services.UserAddressWriteService;
+import com.omnixys.context.ContextAccessor;
+import com.omnixys.context.ContextSnapshot;
+import com.omnixys.context.PrincipalContext;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -17,6 +21,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -33,9 +38,36 @@ class UserAddressResolverTest {
 
     private final Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
+    private static final UUID PRINCIPAL_USER_ID = UUID.fromString("01b05f6a-5800-7000-8000-000000000001");
+
+    private void setupPrincipal() {
+        var principal = new PrincipalContext(
+                "test-sub", PRINCIPAL_USER_ID.toString(), PRINCIPAL_USER_ID.toString(),
+                "test-tenant", java.util.List.of(), null, null, null
+        );
+        var client = new com.omnixys.context.ClientMetadata(
+                "127.0.0.1", null, null, null, null, null, null, null, null
+        );
+        var transport = new com.omnixys.context.TransportMetadata(
+                "GRAPHQL", "POST", null, null, null, null, null, null, null, null, null, null, null
+        );
+        var trace = new com.omnixys.context.TraceMetadata("test-trace", "test-span");
+        var snapshot = new ContextSnapshot(
+                "test-request", "test-correlation", System.currentTimeMillis(),
+                null, principal, client, transport, trace
+        );
+        ContextAccessor.set(snapshot);
+    }
+
+    @AfterEach
+    void clearContext() {
+        ContextAccessor.clear();
+    }
+
     @Test
     void createUserAddressWithValidInput() {
-        var userId = UUID.randomUUID();
+        setupPrincipal();
+
         var streetId = UUID.randomUUID();
         var postalCodeId = UUID.randomUUID();
         var cityId = UUID.randomUUID();
@@ -44,7 +76,7 @@ class UserAddressResolverTest {
         var addressId = UUID.randomUUID();
 
         var input = new CreateUserAddressInput(
-                userId,
+                UUID.randomUUID(),
                 AddressType.HOME,
                 streetId,
                 postalCodeId,
@@ -57,38 +89,19 @@ class UserAddressResolverTest {
 
         var address = UserAddress.builder()
                 .id(addressId)
-                .userId(userId)
+                .userId(PRINCIPAL_USER_ID)
                 .addressType(AddressType.HOME)
                 .build();
 
-        when(writeService.createUserAddress(any(CreateUserAddressInput.class)))
+        when(writeService.createUserAddress(any(CreateUserAddressInput.class), eq(PRINCIPAL_USER_ID)))
                 .thenReturn(address);
 
         var result = resolver.createUserAddress(input);
 
         assertNotNull(result);
         assertEquals(addressId, result.getId());
-        assertEquals(userId, result.getUserId());
+        assertEquals(PRINCIPAL_USER_ID, result.getUserId());
         assertEquals(AddressType.HOME, result.getAddressType());
-    }
-
-    @Test
-    void createUserAddressWithNullUserIdFailsValidation() {
-        var input = new CreateUserAddressInput(
-                null,
-                AddressType.HOME,
-                UUID.randomUUID(),
-                UUID.randomUUID(),
-                UUID.randomUUID(),
-                UUID.randomUUID(),
-                UUID.randomUUID(),
-                null,
-                null
-        );
-
-        var violations = validator.validate(input);
-        assertFalse(violations.isEmpty());
-        assertTrue(violations.stream().anyMatch(v -> v.getPropertyPath().toString().equals("userId")));
     }
 
     @Test

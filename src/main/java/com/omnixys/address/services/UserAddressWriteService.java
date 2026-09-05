@@ -26,12 +26,12 @@ public class UserAddressWriteService {
     private final HouseNumberService houseNumberService;
     private final AddressCacheService addressCacheService;
 
-    public UserAddress createUserAddress(CreateUserAddressInput input) {
+    public UserAddress createUserAddress(CreateUserAddressInput input, UUID principalUserId) {
 
-        log.debug("Creating user address for userId={}", input.userId());
+        log.debug("Creating user address for userId={}", principalUserId);
 
         UserAddress address = new UserAddress();
-        address.setUserId(input.userId());
+        address.setUserId(principalUserId);
         address.setCountryId(input.countryId());
         address.setStateId(input.stateId());
         address.setCityId(input.cityId());
@@ -78,12 +78,16 @@ public class UserAddressWriteService {
         addressCacheService.deleteToken(dto.token());
     }
 
-    public UserAddress updateUserAddress(UpdateUserAddressInput input) {
+    public UserAddress updateUserAddress(UpdateUserAddressInput input, UUID principalUserId) {
 
-        log.debug("Updating user address id={}", input.id());
+        log.debug("Updating user address id={} for userId={}", input.id(), principalUserId);
 
         UserAddress address = repository.findById(input.id())
                 .orElseThrow(() -> new AddressNotFoundException(input.id()));
+
+        if (!address.getUserId().equals(principalUserId)) {
+            throw new AddressNotFoundException(input.id());
+        }
 
         if (input.addressType() != null) {
             address.setAddressType(input.addressType());
