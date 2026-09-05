@@ -3,6 +3,34 @@
 All notable changes in this project will be documented in this file.
 
 
+## [4.0.0](https://github.com/omnixys/address-service/compare/v3.6.0...v4.0.0) (2026-09-05)
+
+### Address
+
+* **Address:** type analytics_outbox.actor_id as user UUID ([](https://github.com/omnixys/address-service/commit/3904b2b9c2fba55018921843fd45bdc118a998df))
+
+### Deps
+
+* **Deps:** update omnixys deps ([](https://github.com/omnixys/address-service/commit/80ed37b1acfc17b209351bb037915a24c7fee9ff))
+
+### Identity
+
+* **Identity:** document U/K identity conventions in AGENTS.md ([](https://github.com/omnixys/address-service/commit/0285e74f4acd33b9d843183866193053bd904ade))
+* **Identity:** bind userId from principal instead of GraphQL argument, prevent IDOR in address mutations ([](https://github.com/omnixys/address-service/commit/772ff02fe8d80e42a8547580d606b96d74bb6947))
+
+### Other
+
+* **Other:** Merge pull request #1 from omnixys/migration/uuid-v7 ([](https://github.com/omnixys/address-service/commit/c12a0800526078931d848d107966cd154831a268)), closes [#1](https://github.com/omnixys/address-service/issues/1)
+
+### Runtime
+
+* **Runtime:** upgrade spring boot 4.1.1 and java 26.0.2.1 ([](https://github.com/omnixys/address-service/commit/1fdf3ec2161dd191675c0fd3c902f04755b235be))
+* **Runtime:** require node 26.8.1 and pnpm 11.24.0 ([](https://github.com/omnixys/address-service/commit/5d2a68faeb714975842619405f4eeff2be0047fe))
+
+### V7
+
+* **V7:** add UUIDv7 ([](https://github.com/omnixys/address-service/commit/244656b61e8fe7bef0e1449c9a7dd76fcbee98c1))
+
 ## [3.6.0](https://github.com/omnixys/address-service/compare/v3.5.0...v3.6.0) (2026-08-26)
 
 ### Otel
